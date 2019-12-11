@@ -1,0 +1,20 @@
+#root {
+  height:100vh;
+	.container {
+    height:100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		align-content: center;
+		.buttons-wrapper {
+      display:flex;
+      flex-direction: column;
+      height: 50%;
+      justify-content: center;
+      align-items: center;
+      button{
+        margin-bottom:2rem;
+      }
+		}
+	}
+}
