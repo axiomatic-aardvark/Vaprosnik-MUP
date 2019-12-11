@@ -1,0 +1,18 @@
+div {
+	font-weight: bold;
+	text-align: center;
+	display: flex;
+  justify-content: center;
+  align-items:center;
+  .back {
+		position: absolute;
+		top: 20px;
+		left: 20px;
+		color: #000;
+		text-decoration: underline;
+		font-weight: bold;
+		&:hover {
+			cursor: pointer;
+		}
+	}
+}
