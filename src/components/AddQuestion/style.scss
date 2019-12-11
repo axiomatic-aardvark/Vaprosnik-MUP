@@ -26,4 +26,17 @@
 			cursor: pointer;
 		}
 	}
+	.done {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		img {
+			width: 80px;
+		}
+		span {
+			margin-top: 20px;
+			font-weight: bold;
+		}
+	}
 }
