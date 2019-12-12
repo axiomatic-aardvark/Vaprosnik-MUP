@@ -79,7 +79,7 @@ export default props => {
 				</Form>
 			) : (
 				<div className="done">
-					<img src={Done} alt="done-img"></img>
+					<img src={Done} alt="done-img" className="rotate-in-center"></img>
 					<span>Въпросът е успешно добавен!</span>
 				</div>
 			)}
