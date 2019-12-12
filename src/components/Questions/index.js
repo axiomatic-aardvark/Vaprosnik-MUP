@@ -76,7 +76,7 @@ export default props => {
 			<ul className="questions">
 				{questions ? (
 					questions.map((q, i) => {
-						return <QuestionCard text={q.text} key={i} className="question-card" />;
+						return <QuestionCard text={q.text} option1={q.option1} option2={q.option2} option3={q.option3} option4={q.option4} key={i} className="question-card" />;
 					})
 				) : (
 					<span>Моля изчакайте...</span>
