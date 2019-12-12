@@ -13,6 +13,10 @@ export default props => {
 		setIsModalOpen(true);
 	};
 
+	const onFinalSubmit = () => {
+		setIsSubmitted(true);
+	};
+
 	const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
 	const getQuestions = () => {
 		axios
@@ -36,8 +40,6 @@ export default props => {
 		getQuestions();
 	}, []);
 
-	console.log(questions);
-
 	return (
 		<div className="questions-wrapper">
 			{isModalOpen && !isSubmitted ? (
@@ -47,7 +49,7 @@ export default props => {
 						<Button
 							className="submit-btn"
 							onClick={() => {
-								setIsSubmitted(true);
+								onFinalSubmit();
 							}}
 							variant="success"
 						>
@@ -76,7 +78,17 @@ export default props => {
 			<ul className="questions">
 				{questions ? (
 					questions.map((q, i) => {
-						return <QuestionCard text={q.text} option1={q.option1} option2={q.option2} option3={q.option3} option4={q.option4} key={i} className="question-card" />;
+						return (
+							<QuestionCard
+								text={q.text}
+								option1={q.option1}
+								option2={q.option2}
+								option3={q.option3}
+								option4={q.option4}
+								key={i}
+								className="question-card"
+							/>
+						);
 					})
 				) : (
 					<span>Моля изчакайте...</span>

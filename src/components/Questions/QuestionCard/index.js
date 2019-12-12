@@ -4,18 +4,45 @@ import { InputGroup, FormControl } from 'react-bootstrap';
 export default props => {
 	const [selectedOption, setSelectedOption] = useState('');
 
-	const option1 = props.option1.split(',')[0];
-	const option2 = props.option2.split(',')[0];
-	const option3 = props.option3.split(',')[0];
-	const option4 = props.option4.split(',')[0];
+	let option1 = props.option1.split(',')[0];
+	let option2 = props.option2.split(',')[0];
+	let option3 = props.option3.split(',')[0];
+	let option4 = props.option4.split(',')[0];
 
-	const onToggle = newValue => {
+	const baseArr = [option1, option2, option3, option4];
+	
+	const scrambledArr = shuffle(baseArr);
+
+	option1 = scrambledArr[0];
+	option2 = scrambledArr[1];
+	option3 = scrambledArr[2];
+	option4 = scrambledArr[3];
+
+	const onToggle = (newValue) => {
 		if (selectedOption !== newValue) {
 			setSelectedOption(newValue);
 		}
 	};
 
-	console.log(selectedOption);
+	function shuffle(array) {
+		var currentIndex = array.length,
+			temporaryValue,
+			randomIndex;
+
+		// While there remain elements to shuffle...
+		while (0 !== currentIndex) {
+			// Pick a remaining element...
+			randomIndex = Math.floor(Math.random() * currentIndex);
+			currentIndex -= 1;
+
+			// And swap it with the current element.
+			temporaryValue = array[currentIndex];
+			array[currentIndex] = array[randomIndex];
+			array[randomIndex] = temporaryValue;
+		}
+
+		return array;
+	}
 
 	return (
 		<div className="card">
