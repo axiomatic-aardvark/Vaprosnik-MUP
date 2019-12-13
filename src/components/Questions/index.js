@@ -105,12 +105,12 @@ export default props => {
 				)}
 				{questions.questions ? (
 					<Fragment>
-						{isSubmitted ? (
+						{/* {isSubmitted ? (
 							<Fragment>
 								<span className="green">{`Брой верни отговори: `}</span>
 								<span className="red">{`Брой грешни отговори: `}</span>
 							</Fragment>
-						) : null}
+						) : null} */}
 						<Button
 							className="submit-btn"
 							onClick={e => {
