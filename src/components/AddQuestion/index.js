@@ -50,15 +50,15 @@ export default props => {
 				<Form>
 					<Form.Group controlId="formGroupEmail">
 						<Form.Label>Въпрос</Form.Label>
-						<Form.Control type="text" onChange={e => setText(e.target.value)} />
+						<Form.Control required type="text" onChange={e => setText(e.target.value)} />
 					</Form.Group>
 					<Form.Group controlId="formGroupPassword">
 						<Form.Label>Верен Отговор</Form.Label>
-						<Form.Control type="text" onChange={e => setOption1(e.target.value)} />
+						<Form.Control required type="text" onChange={e => setOption1(e.target.value)} />
 					</Form.Group>
 					<Form.Group controlId="formGroupPassword">
 						<Form.Label>Грешен Отговор 1</Form.Label>
-						<Form.Control type="text" onChange={e => setOption2(e.target.value)} />
+						<Form.Control required type="text" onChange={e => setOption2(e.target.value)} />
 					</Form.Group>
 					<Form.Group controlId="formGroupPassword">
 						<Form.Label>Грешен Отговор 2</Form.Label>
@@ -81,6 +81,15 @@ export default props => {
 				<div className="done">
 					<img src={Done} alt="done-img" className="rotate-in-center"></img>
 					<span>Въпросът е успешно добавен!</span>
+					<Button
+						className="add-more"
+						onClick={() => {
+							props.history.push('/addQuestion');
+						}}
+						variant="primary"
+					>
+						Добави още един
+					</Button>
 				</div>
 			)}
 		</div>

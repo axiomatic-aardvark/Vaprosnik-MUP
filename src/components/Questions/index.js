@@ -41,6 +41,8 @@ export default props => {
 		getQuestions();
 	}, []);
 
+	console.log(questions);
+
 	function shuffle(array) {
 		var currentIndex = array.length,
 			temporaryValue,

@@ -4,11 +4,6 @@ import { InputGroup, FormControl } from 'react-bootstrap';
 export default props => {
 	const [selectedOption, setSelectedOption] = useState('');
 
-	// let option1 = props.option1.split(',')[0];
-	// let option2 = props.option2.split(',')[0];
-	// let option3 = props.option3.split(',')[0];
-	// let option4 = props.option4.split(',')[0];
-
 	const onToggle = newValue => {
 		if (selectedOption !== newValue) {
 			setSelectedOption(newValue);
