@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useContext, Fragment } from 'react';
+import GlobalContext from '../GlobalState/globalContext';
 import { Button } from 'react-bootstrap';
 import QuestionCard from './QuestionCard';
 import './style.scss';
 
 export default props => {
-	const [questions, setQuestions] = useState('');
+	const globalContext = useContext(GlobalContext);
+	const { questions } = globalContext;
+
 	const [isSubmitted, setIsSubmitted] = useState(false);
+
 	// const [isModalOpen, setIsModalOpen] = useState(false);
 
 	const getResults = e => {
@@ -17,35 +20,6 @@ export default props => {
 	// const onFinalSubmit = () => {
 	// 	setIsSubmitted(true);
 	// };
-
-	const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-	const getQuestions = () => {
-		axios
-			.get(proxyUrl + 'https://us-central1-vaprosnik-mup.cloudfunctions.net/getQuestions')
-			.then(response => {
-				setQuestions(response.data);
-			})
-			.catch(function(error) {
-				if (error.response) {
-					console.log(error.response.headers);
-				} else if (error.request) {
-					console.log(error.request);
-				} else {
-					console.log(error.message);
-				}
-				console.log(error.config);
-			});
-	};
-
-	useEffect(() => {
-		getQuestions();
-	}, []);
-
-	const getLimitedQuestions = () => {
-		const baseQuestions = questions;
-		const scrambledQuestions = shuffle(baseQuestions);
-		return scrambledQuestions.slice(0, 20);
-	};
 
 	function shuffle(array) {
 		var currentIndex = array.length,
@@ -109,8 +83,8 @@ export default props => {
 				Назад
 			</span>
 			<ul className="questions">
-				{questions ? (
-					getLimitedQuestions().map((q, i) => {
+				{questions.questions ? (
+					questions.questions.map((q, i) => {
 						let scrambledArr = genScrambledArr(q.option1, q.option2, q.option3, q.option4);
 
 						return (
@@ -129,16 +103,24 @@ export default props => {
 				) : (
 					<span>Моля изчакайте...</span>
 				)}
-				{questions ? (
-					<Button
-						className="submit-btn"
-						onClick={e => {
-							isSubmitted ? props.history.push('/') : getResults(e);
-						}}
-						variant={isSubmitted ? 'success' : 'primary'}
-					>
-						{isSubmitted ? 'Готово' : 'Край'}
-					</Button>
+				{questions.questions ? (
+					<Fragment>
+						{isSubmitted ? (
+							<Fragment>
+								<span className="green">{`Брой верни отговори: `}</span>
+								<span className="red">{`Брой грешни отговори: `}</span>
+							</Fragment>
+						) : null}
+						<Button
+							className="submit-btn"
+							onClick={e => {
+								isSubmitted ? props.history.push('/') : getResults(e);
+							}}
+							variant={isSubmitted ? 'success' : 'primary'}
+						>
+							{isSubmitted ? 'Готово' : 'Край'}
+						</Button>
+					</Fragment>
 				) : null}
 			</ul>
 		</div>
