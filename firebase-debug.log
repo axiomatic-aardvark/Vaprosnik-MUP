@@ -1,0 +1,60 @@
+[debug] [2019-12-13T08:06:13.955Z] ----------------------------------------------------------------------
+[debug] [2019-12-13T08:06:13.957Z] Command:       /home/arthas/.nvm/versions/node/v13.3.0/bin/node /usr/local/bin/firebase deploy
+[debug] [2019-12-13T08:06:13.957Z] CLI Version:   7.9.0
+[debug] [2019-12-13T08:06:13.957Z] Platform:      linux
+[debug] [2019-12-13T08:06:13.957Z] Node Version:  v13.3.0
+[debug] [2019-12-13T08:06:13.958Z] Time:          Fri Dec 13 2019 10:06:13 GMT+0200 (Eastern European Standard Time)
+[debug] [2019-12-13T08:06:13.958Z] ----------------------------------------------------------------------
+[debug] [2019-12-13T08:06:13.958Z] 
+[debug] [2019-12-13T08:06:13.963Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-12-13T08:06:13.964Z] > authorizing via signed-in user
+[debug] [2019-12-13T08:06:13.964Z] [iam] checking project vaprosnik-mup for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2019-12-13T08:06:13.965Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/vaprosnik-mup:testIamPermissions  
+
+[debug] [2019-12-13T08:06:14.989Z] <<< HTTP RESPONSE 200
+[debug] [2019-12-13T08:06:14.993Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/vaprosnik-mup  
+ 
+[debug] [2019-12-13T08:06:15.282Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'vaprosnik-mup'...
+[info] 
+[info] i  deploying hosting
+[debug] [2019-12-13T08:06:15.291Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/vaprosnik-mup/versions  
+
+[debug] [2019-12-13T08:06:17.139Z] <<< HTTP RESPONSE 200
+[info] i  hosting[vaprosnik-mup]: beginning deploy...
+[info] i  hosting[vaprosnik-mup]: found 19 files in build
+[debug] [2019-12-13T08:06:17.176Z] [hosting] hash cache [YnVpbGQ] stored for 19 files
+[debug] [2019-12-13T08:06:17.177Z] [hosting][hash queue][FINAL]
+[debug] [2019-12-13T08:06:17.178Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/vaprosnik-mup/versions/121713e51b52170a:populateFiles  
+ <request body omitted>
+[debug] [2019-12-13T08:06:18.889Z] <<< HTTP RESPONSE 200
+[debug] [2019-12-13T08:06:18.891Z] [hosting][populate queue][FINAL]
+[debug] [2019-12-13T08:06:18.892Z] [hosting] uploads queued: 0
+[debug] [2019-12-13T08:06:18.893Z] [hosting][upload queue][FINAL]
+[info] ✔  hosting[vaprosnik-mup]: file upload complete
+[debug] [2019-12-13T08:06:18.895Z] [hosting] deploy completed after 1753ms
+[debug] [2019-12-13T08:06:18.993Z] [
+  {
+    "config": {
+      "public": "build",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
+      "site": "vaprosnik-mup"
+    },
+    "site": "vaprosnik-mup",
+    "version": "sites/vaprosnik-mup/versions/121713e51b52170a"
+  }
+]
+[info] i  hosting[vaprosnik-mup]: finalizing version...
+[debug] [2019-12-13T08:06:18.994Z] >>> HTTP REQUEST PATCH https://firebasehosting.googleapis.com/v1beta1/sites/vaprosnik-mup/versions/121713e51b52170a?updateMask=status  
+
