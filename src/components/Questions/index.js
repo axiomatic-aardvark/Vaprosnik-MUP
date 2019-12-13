@@ -41,7 +41,11 @@ export default props => {
 		getQuestions();
 	}, []);
 
-	console.log(questions);
+	const getLimitedQuestions = () => {
+		const baseQuestions = questions;
+		const scrambledQuestions = shuffle(baseQuestions);
+		return scrambledQuestions.slice(0, 20);
+	};
 
 	function shuffle(array) {
 		var currentIndex = array.length,
@@ -106,7 +110,7 @@ export default props => {
 			</span>
 			<ul className="questions">
 				{questions ? (
-					questions.map((q, i) => {
+					getLimitedQuestions().map((q, i) => {
 						let scrambledArr = genScrambledArr(q.option1, q.option2, q.option3, q.option4);
 
 						return (
@@ -129,11 +133,11 @@ export default props => {
 					<Button
 						className="submit-btn"
 						onClick={e => {
-							getResults(e);
+							isSubmitted ? props.history.push('/') : getResults(e);
 						}}
-						variant={'primary'}
+						variant={isSubmitted ? 'success' : 'primary'}
 					>
-						Край
+						{isSubmitted ? 'Готово' : 'Край'}
 					</Button>
 				) : null}
 			</ul>

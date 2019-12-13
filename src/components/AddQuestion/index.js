@@ -36,6 +36,10 @@ export default props => {
 			});
 	};
 
+	// const redirect = () => {
+	// 	props.history.push('/addQuestion');
+	// };
+
 	return (
 		<div className="add-question">
 			<span
@@ -81,15 +85,9 @@ export default props => {
 				<div className="done">
 					<img src={Done} alt="done-img" className="rotate-in-center"></img>
 					<span>Въпросът е успешно добавен!</span>
-					<Button
-						className="add-more"
-						onClick={() => {
-							props.history.push('/addQuestion');
-						}}
-						variant="primary"
-					>
+					{/* <Button className="add-more" onClick={() => redirect()} variant="primary">
 						Добави още един
-					</Button>
+					</Button> */}
 				</div>
 			)}
 		</div>
