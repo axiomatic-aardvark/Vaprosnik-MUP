@@ -1,96 +1,113 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import { InputGroup, FormControl } from 'react-bootstrap';
 
 export default props => {
 	const [selectedOption, setSelectedOption] = useState('');
 
-	let option1 = props.option1.split(',')[0];
-	let option2 = props.option2.split(',')[0];
-	let option3 = props.option3.split(',')[0];
-	let option4 = props.option4.split(',')[0];
+	// let option1 = props.option1.split(',')[0];
+	// let option2 = props.option2.split(',')[0];
+	// let option3 = props.option3.split(',')[0];
+	// let option4 = props.option4.split(',')[0];
 
-	const baseArr = [option1, option2, option3, option4];
-	
-	const scrambledArr = shuffle(baseArr);
-
-	option1 = scrambledArr[0];
-	option2 = scrambledArr[1];
-	option3 = scrambledArr[2];
-	option4 = scrambledArr[3];
-
-	const onToggle = (newValue) => {
+	const onToggle = newValue => {
 		if (selectedOption !== newValue) {
 			setSelectedOption(newValue);
 		}
 	};
 
-	function shuffle(array) {
-		var currentIndex = array.length,
-			temporaryValue,
-			randomIndex;
+	const quote = '"';
 
-		// While there remain elements to shuffle...
-		while (0 !== currentIndex) {
-			// Pick a remaining element...
-			randomIndex = Math.floor(Math.random() * currentIndex);
-			currentIndex -= 1;
-
-			// And swap it with the current element.
-			temporaryValue = array[currentIndex];
-			array[currentIndex] = array[randomIndex];
-			array[randomIndex] = temporaryValue;
+	const getRightAnswer = () => {
+		if (props.option1.split(',')[1] === 't') {
+			return props.option1.split(',')[0];
+		} else if (props.option2.split(',')[1] === 't') {
+			return props.option2.split(',')[0];
+		} else if (props.option3.split(',')[1] === 't') {
+			return props.option3.split(',')[0];
+		} else if (props.option4.split(',')[1] === 't') {
+			return props.option4.split(',')[0];
 		}
-
-		return array;
-	}
+	};
 
 	return (
 		<div className="card">
 			<span className="title">{props.text}</span>
-			<InputGroup className="mb-3">
-				<InputGroup.Prepend>
-					<InputGroup.Checkbox
-						onChange={() => {
-							onToggle(option1);
-						}}
-						aria-label="Checkbox for following text input"
-					/>
-				</InputGroup.Prepend>
-				<FormControl aria-label="Text input with checkbox" value={`А)  ${option1}`} disabled={true} />
-			</InputGroup>
-			<InputGroup className="mb-3">
-				<InputGroup.Prepend>
-					<InputGroup.Checkbox
-						onChange={() => {
-							onToggle(option2);
-						}}
-						aria-label="Checkbox for following text input"
-					/>
-				</InputGroup.Prepend>
-				<FormControl aria-label="Text input with checkbox" value={`Б)  ${option2}`} disabled={true} />
-			</InputGroup>
-			<InputGroup className="mb-3">
-				<InputGroup.Prepend>
-					<InputGroup.Checkbox
-						onChange={() => {
-							onToggle(option3);
-						}}
-						aria-label="Checkbox for following text input"
-					/>
-				</InputGroup.Prepend>
-				<FormControl aria-label="Text input with checkbox" value={`В)  ${option3}`} disabled={true} />
-			</InputGroup>
-			<InputGroup className="mb-3">
-				<InputGroup.Prepend>
-					<InputGroup.Checkbox
-						onChange={() => {
-							onToggle(option4);
-						}}
-						aria-label="Checkbox for following text input"
-					/>
-				</InputGroup.Prepend>
-				<FormControl aria-label="Text input with checkbox" value={`Г)  ${option4}`} disabled={true} />
-			</InputGroup>
+			{!props.isSubmitted ? (
+				<Fragment>
+					<InputGroup className="mb-3">
+						<InputGroup.Prepend>
+							<InputGroup.Checkbox
+								onChange={() => {
+									onToggle(props.option1);
+								}}
+								aria-label="Checkbox for following text input"
+							/>
+						</InputGroup.Prepend>
+						<FormControl
+							aria-label="Text input with checkbox"
+							value={`А)  ${props.option1.split(',')[0]}`}
+							disabled={true}
+						/>
+					</InputGroup>
+					<InputGroup className="mb-3">
+						<InputGroup.Prepend>
+							<InputGroup.Checkbox
+								onChange={() => {
+									onToggle(props.option2);
+								}}
+								aria-label="Checkbox for following text input"
+							/>
+						</InputGroup.Prepend>
+						<FormControl
+							aria-label="Text input with checkbox"
+							value={`Б)  ${props.option2.split(',')[0]}`}
+							disabled={true}
+						/>
+					</InputGroup>
+					<InputGroup className="mb-3">
+						<InputGroup.Prepend>
+							<InputGroup.Checkbox
+								onChange={() => {
+									onToggle(props.option3);
+								}}
+								aria-label="Checkbox for following text input"
+							/>
+						</InputGroup.Prepend>
+						<FormControl
+							aria-label="Text input with checkbox"
+							value={`В)  ${props.option3.split(',')[0]}`}
+							disabled={true}
+						/>
+					</InputGroup>
+					<InputGroup className="mb-3">
+						<InputGroup.Prepend>
+							<InputGroup.Checkbox
+								onChange={() => {
+									onToggle(props.option4);
+								}}
+								aria-label="Checkbox for following text input"
+							/>
+						</InputGroup.Prepend>
+						<FormControl
+							aria-label="Text input with checkbox"
+							value={`Г)  ${props.option4.split(',')[0]}`}
+							disabled={true}
+						/>
+					</InputGroup>
+				</Fragment>
+			) : selectedOption.split(',')[1] === 't' ? (
+				<Fragment>
+					<span className="res-msg green">Верен отговор!</span>
+					<span className="green">{`Ти отговори: "${selectedOption.split(',')[0]}"`}</span>
+				</Fragment>
+			) : (
+				<Fragment>
+					<span className="res-msg red">Грешен отговор!</span>
+					<span className="red">{`Ти отговори: ${
+						selectedOption ? quote + selectedOption.split(',')[0] + quote : '"Не давам отговор"'
+					}, а верният отг. е: "${getRightAnswer()}"`}</span>
+				</Fragment>
+			)}
 		</div>
 	);
 };

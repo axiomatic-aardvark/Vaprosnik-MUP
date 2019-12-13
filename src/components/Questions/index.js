@@ -7,15 +7,16 @@ import './style.scss';
 export default props => {
 	const [questions, setQuestions] = useState('');
 	const [isSubmitted, setIsSubmitted] = useState(false);
-	const [isModalOpen, setIsModalOpen] = useState(false);
+	// const [isModalOpen, setIsModalOpen] = useState(false);
 
-	const onModalOpen = () => {
-		setIsModalOpen(true);
-	};
-
-	const onFinalSubmit = () => {
+	const getResults = e => {
+		e.preventDefault();
 		setIsSubmitted(true);
 	};
+
+	// const onFinalSubmit = () => {
+	// 	setIsSubmitted(true);
+	// };
 
 	const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
 	const getQuestions = () => {
@@ -40,9 +41,35 @@ export default props => {
 		getQuestions();
 	}, []);
 
+	function shuffle(array) {
+		var currentIndex = array.length,
+			temporaryValue,
+			randomIndex;
+
+		// While there remain elements to shuffle...
+		while (0 !== currentIndex) {
+			// Pick a remaining element...
+			randomIndex = Math.floor(Math.random() * currentIndex);
+			currentIndex -= 1;
+
+			// And swap it with the current element.
+			temporaryValue = array[currentIndex];
+			array[currentIndex] = array[randomIndex];
+			array[randomIndex] = temporaryValue;
+		}
+
+		return array;
+	}
+
+	const genScrambledArr = (option1, option2, option3, option4) => {
+		const baseArr = [option1, option2, option3, option4];
+
+		return shuffle(baseArr);
+	};
+
 	return (
 		<div className="questions-wrapper">
-			{isModalOpen && !isSubmitted ? (
+			{/* {isModalOpen && !isSubmitted ? (
 				<div className="confirmation">
 					<span>Сигурни ли сте, че искате да приключите теста?</span>
 					<div className="buttons-wrapper">
@@ -66,7 +93,7 @@ export default props => {
 						</Button>
 					</div>
 				</div>
-			) : null}
+			) : null} */}
 			<span
 				className="back"
 				onClick={() => {
@@ -78,13 +105,16 @@ export default props => {
 			<ul className="questions">
 				{questions ? (
 					questions.map((q, i) => {
+						let scrambledArr = genScrambledArr(q.option1, q.option2, q.option3, q.option4);
+
 						return (
 							<QuestionCard
 								text={q.text}
-								option1={q.option1}
-								option2={q.option2}
-								option3={q.option3}
-								option4={q.option4}
+								option1={scrambledArr[0]}
+								option2={scrambledArr[1]}
+								option3={scrambledArr[2]}
+								option4={scrambledArr[3]}
+								isSubmitted={isSubmitted}
 								key={i}
 								className="question-card"
 							/>
@@ -96,12 +126,12 @@ export default props => {
 				{questions ? (
 					<Button
 						className="submit-btn"
-						onClick={() => {
-							!isSubmitted ? onModalOpen() : props.history.push('/');
+						onClick={e => {
+							getResults(e);
 						}}
-						variant={isSubmitted ? 'success' : 'primary'}
+						variant={'primary'}
 					>
-						{!isSubmitted ? 'Край' : 'Готово'}
+						Край
 					</Button>
 				) : null}
 			</ul>
