@@ -1,90 +1,116 @@
 .confirmation {
-	-webkit-box-shadow: 0px 0px 15px 3px rgba(0, 0, 0, 0.75);
-	-moz-box-shadow: 0px 0px 15px 3px rgba(0, 0, 0, 0.75);
-	box-shadow: 0px 0px 15px 3px rgba(0, 0, 0, 0.75);
-	position: fixed;
-	display: flex;
-	flex-direction: column;
-	background-color: black;
-	top: 30%;
-	height: 200px;
-	z-index: 100;
-	width: 350px;
-	span {
-		color: #fff;
-		max-width: 300px;
-		margin-bottom: 25px;
-	}
-	.buttons-wrapper {
-		width: 150px;
-		justify-content: space-between;
-	}
+    -webkit-box-shadow: 0px 0px 15px 3px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 15px 3px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 15px 3px rgba(0, 0, 0, 0.75);
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    top: 30%;
+    height: 200px;
+    z-index: 100;
+    width: 350px;
+
+    span {
+        color: #fff;
+        max-width: 300px;
+        margin-bottom: 25px;
+    }
+
+    .buttons-wrapper {
+        width: 150px;
+        justify-content: space-between;
+    }
+}
+
+.questions-wrapper {
+    min-width: 800px;
 }
 
 div {
-	font-weight: bold;
-	text-align: center;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	.back {
-		position: absolute;
-		top: 20px;
-		left: 20px;
-		color: #000;
-		text-decoration: underline;
-		font-weight: bold;
-		&:hover {
-			cursor: pointer;
-		}
-	}
-	.questions {
-		padding-left: 0;
-		height: 75vh;
-		.card {
-			z-index: 10;
-			.title {
-				max-width: 300px;
-				font-size: 15px;
-				margin-bottom: 5px;
-			}
-			height: 200px;
-			width: 330px;
-			background-color: bisque;
-			margin-bottom: 25px;
-			.form-control {
-				background: none;
-				border: none;
-				max-width: 290px;
-				font-size: 14px;
-			}
-			.input-group {
-				margin-bottom: 0 !important;
-			}
-			.input-group-text {
-				padding: 0;
-				background: none;
-				border: none;
-				margin-left: 20px;
-			}
-			.red {
-				color: red;
-				max-width: 300px;
-				font-size: 15px;
-			}
-			.green {
-				color: green;
-				max-width: 300px;
-				font-size: 15px;
-			}
-			.res-msg {
-				margin-top: 20px;
-				max-width: 300px;
-				font-size: 15px;
-			}
-		}
-		.submit-btn {
-			margin-bottom: 25px;
-		}
-	}
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .back {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        color: #000;
+        text-decoration: underline;
+        font-weight: bold;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .questions {
+        padding-left: 0;
+        height: 75vh;
+
+        .card {
+            z-index: 10;
+
+            .title {
+                max-width: 300px;
+                font-size: 15px;
+                margin-bottom: 5px;
+            }
+
+            padding: 0 2rem;
+            height: 200px;
+            width: 550px;
+            background-color: bisque;
+            margin-bottom: 25px;
+
+            .form-control {
+                background: none;
+                border: none;
+                // max-width: 290px;
+                font-size: 14px;
+            }
+
+            .input-group {
+                margin-bottom: 0 !important;
+            }
+
+            .input-group-text {
+                padding: 0;
+                background: none;
+                border: none;
+                margin-left: 20px;
+            }
+
+            .red {
+                color: red;
+                max-width: 300px;
+                font-size: 15px;
+            }
+
+            .green {
+                color: green;
+                max-width: 300px;
+                font-size: 15px;
+            }
+
+            .res-msg {
+                margin-top: 20px;
+                max-width: 300px;
+                font-size: 15px;
+            }
+        }
+
+        .submit-btn {
+            margin-bottom: 25px;
+        }
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .questions {
+        margin-left: 190px
+    }
 }
