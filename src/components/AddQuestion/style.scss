@@ -6,6 +6,10 @@
   height: 100%;
   position: relative;
   form {
+    .form-group {
+      width: 360px;
+    }
+
     height: 70%;
     width: 80%;
     display: flex;
@@ -14,6 +18,12 @@
 
     div:nth-child(1) > label {
       margin-right: 10px;
+    }
+
+    .group-question {
+      width: 360px;
+      display: flex;
+      flex-direction: column;
     }
 
     button {

@@ -69,16 +69,18 @@ export default props => {
       </span>
       {!isSubmitted ? (
         <Form>
-          <Form.Group controlId="formGroupEmail">
-            <Form.Label>Въпрос</Form.Label>
+          <Form.Group className="group-question" controlId="questions">
+            <Form.Label>Въпрос:</Form.Label>
             <Form.Control
               required
               type="text"
+              as="textarea"
+              rows="6"
               ref={inputRef}
               onChange={e => setText(e.target.value)}
             />
           </Form.Group>
-          <Form.Group controlId="formGroupPassword">
+          <Form.Group controlId="option1">
             <Form.Label>Верен Отговор</Form.Label>
             <Form.Control
               required
@@ -86,7 +88,7 @@ export default props => {
               onChange={e => setOption1(e.target.value)}
             />
           </Form.Group>
-          <Form.Group controlId="formGroupPassword">
+          <Form.Group controlId="option2">
             <Form.Label>Грешен Отговор 1</Form.Label>
             <Form.Control
               required
@@ -94,14 +96,14 @@ export default props => {
               onChange={e => setOption2(e.target.value)}
             />
           </Form.Group>
-          <Form.Group controlId="formGroupPassword">
+          <Form.Group controlId="option3">
             <Form.Label>Грешен Отговор 2</Form.Label>
             <Form.Control
               type="text"
               onChange={e => setOption3(e.target.value)}
             />
           </Form.Group>
-          <Form.Group controlId="formGroupPassword">
+          <Form.Group controlId="option4">
             <Form.Label>Грешен Отговор 3</Form.Label>
             <Form.Control
               type="text"
