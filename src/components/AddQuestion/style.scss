@@ -10,7 +10,7 @@
       width: 360px;
     }
 
-    height: 70%;
+    height: 90%;
     width: 80%;
     display: flex;
     flex-direction: column;
@@ -21,13 +21,23 @@
     }
 
     .group-question {
-      width: 360px;
+      width: 600px;
       display: flex;
       flex-direction: column;
     }
 
+    @media (max-width: 600px) {
+      body {
+        background-color: olive;
+      }
+    }
+
     button {
       width: 100px;
+    }
+
+    input {
+      max-width: 260px;
     }
   }
   .back {

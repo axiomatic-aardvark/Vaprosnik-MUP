@@ -89,7 +89,7 @@ export default props => {
               required
               type="text"
               as="textarea"
-              rows="3"
+              rows="5"
               ref={inputRef}
               onChange={e => setText(e.target.value)}
             />
