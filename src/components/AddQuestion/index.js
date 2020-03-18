@@ -16,7 +16,8 @@ export default props => {
 
   const proxyUrl = "https://cors-anywhere.herokuapp.com/";
 
-  const onFormSubmit = () => {
+  const onFormSubmit = e => {
+    e.preventDefault();
     pushQuestionToDB();
     setIsSubmitted(true);
     setEditing(false);
@@ -44,21 +45,34 @@ export default props => {
   };
 
   const inputRef = useRef(null);
+  const buttonRef = useRef(null);
 
-  console.log(isEditing);
   useEffect(() => {
     if (isEditing) {
       inputRef.current.focus();
     }
   }, [isEditing]);
 
+  useEffect(() => {
+    if (isSubmitted) {
+      buttonRef.current.focus();
+    }
+  });
+
   const handleClick = () => {
     setEditing(true);
     setIsSubmitted(false);
   };
 
+  const pressedKeyOnDone = e => {
+    const { keyCode } = e;
+    if (isSubmitted && keyCode === 13) {
+      handleClick();
+    }
+  };
+
   return (
-    <div className="add-question">
+    <div className="add-question" onKeyDown={e => pressedKeyOnDone(e)}>
       <span
         className="back"
         onClick={() => {
@@ -68,7 +82,7 @@ export default props => {
         Назад
       </span>
       {!isSubmitted ? (
-        <Form>
+        <Form onSubmit={e => onFormSubmit(e)}>
           <Form.Group className="group-question" controlId="questions">
             <Form.Label>Въпрос:</Form.Label>
             <Form.Control
@@ -110,12 +124,7 @@ export default props => {
               onChange={e => setOption4(e.target.value)}
             />
           </Form.Group>
-          <Button
-            onClick={() => {
-              onFormSubmit();
-            }}
-            variant="primary"
-          >
+          <Button type="submit" variant="primary">
             Изпрати
           </Button>
         </Form>
@@ -124,6 +133,7 @@ export default props => {
           <img src={Done} alt="done-img" className="rotate-in-center"></img>
           <span>Въпросът е успешно добавен!</span>
           <Button
+            ref={buttonRef}
             className="add-more"
             onClick={() => handleClick()}
             variant="primary"
