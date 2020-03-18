@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import "./style.scss";
 import { Form, Button } from "react-bootstrap";
@@ -12,11 +12,14 @@ export default props => {
   const [text, setText] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  const [isEditing, setEditing] = useState(true);
+
   const proxyUrl = "https://cors-anywhere.herokuapp.com/";
 
   const onFormSubmit = () => {
     pushQuestionToDB();
     setIsSubmitted(true);
+    setEditing(false);
   };
 
   const pushQuestionToDB = () => {
@@ -40,6 +43,20 @@ export default props => {
       });
   };
 
+  const inputRef = useRef(null);
+
+  console.log(isEditing);
+  useEffect(() => {
+    if (isEditing) {
+      inputRef.current.focus();
+    }
+  }, [isEditing]);
+
+  const handleClick = () => {
+    setEditing(true);
+    setIsSubmitted(false);
+  };
+
   return (
     <div className="add-question">
       <span
@@ -57,6 +74,7 @@ export default props => {
             <Form.Control
               required
               type="text"
+              ref={inputRef}
               onChange={e => setText(e.target.value)}
             />
           </Form.Group>
@@ -105,7 +123,7 @@ export default props => {
           <span>Въпросът е успешно добавен!</span>
           <Button
             className="add-more"
-            onClick={() => setIsSubmitted(false)}
+            onClick={() => handleClick()}
             variant="primary"
           >
             Добави още един
