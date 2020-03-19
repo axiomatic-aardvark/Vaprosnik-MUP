@@ -1,5 +1,7 @@
 import React, { useState, useContext, Fragment } from "react";
 import GlobalContext from "../GlobalState/globalContext";
+import Loader from "react-loader-spinner";
+
 import { Button } from "react-bootstrap";
 import QuestionCard from "./QuestionCard";
 import "./style.scss";
@@ -108,7 +110,19 @@ export default props => {
             );
           })
         ) : (
-          <span>Моля изчакайте...</span>
+          <>
+            <Loader
+              type="ThreeDots"
+              color="#007bff"
+              height={100}
+              width={100}
+              timeout={1200000} //20 minutes
+            />
+            <span>
+              *Ако въпросите не заредят до 2-3 мин има проблем с базата данни.
+              :( Моля опитайте по-късно.
+            </span>
+          </>
         )}
         {questions.questions ? (
           <Fragment>
@@ -121,11 +135,11 @@ export default props => {
             <Button
               className="submit-btn"
               onClick={e => {
-                isSubmitted ? props.history.push("/") : getResults(e);
+                isSubmitted ? window.location.reload() : getResults(e);
               }}
               variant={isSubmitted ? "success" : "primary"}
             >
-              {isSubmitted ? "Готово" : "Край"}
+              {isSubmitted ? "Зареди нови въпроси" : "Край"}
             </Button>
           </Fragment>
         ) : null}
