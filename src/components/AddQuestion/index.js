@@ -4,6 +4,8 @@ import "./style.scss";
 import { Form, Button } from "react-bootstrap";
 import Done from "../../images/success.png";
 
+import { useAlert } from "react-alert";
+
 export default props => {
   const [option1, setOption1] = useState("");
   const [option2, setOption2] = useState("");
@@ -15,6 +17,8 @@ export default props => {
   const [isEditing, setEditing] = useState(true);
 
   const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+
+  const alert = useAlert();
 
   const onFormSubmit = e => {
     e.preventDefault();
