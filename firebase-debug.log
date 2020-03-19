@@ -1,0 +1,30 @@
+[debug] [2020-03-19T17:02:40.415Z] ----------------------------------------------------------------------
+[debug] [2020-03-19T17:02:40.416Z] Command:       /home/arthas/.nvm/versions/node/v10.13.0/bin/node /home/arthas/.nvm/versions/node/v10.13.0/bin/firebase deploy
+[debug] [2020-03-19T17:02:40.416Z] CLI Version:   7.11.0
+[debug] [2020-03-19T17:02:40.416Z] Platform:      linux
+[debug] [2020-03-19T17:02:40.416Z] Node Version:  v10.13.0
+[debug] [2020-03-19T17:02:40.416Z] Time:          Thu Mar 19 2020 19:02:40 GMT+0200 (Eastern European Standard Time)
+[debug] [2020-03-19T17:02:40.416Z] ----------------------------------------------------------------------
+[debug] [2020-03-19T17:02:40.416Z] 
+[debug] [2020-03-19T17:02:40.423Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-03-19T17:02:40.423Z] > authorizing via signed-in user
+[debug] [2020-03-19T17:02:40.423Z] [iam] checking project vaprosnik-mup for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2020-03-19T17:02:40.424Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-03-19T17:02:40.425Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-03-19T17:02:40.716Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-19T17:02:40.724Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/vaprosnik-mup:testIamPermissions  
+
+[debug] [2020-03-19T17:02:41.860Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-19T17:02:41.863Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/vaprosnik-mup  
+ 
+[debug] [2020-03-19T17:02:42.678Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'vaprosnik-mup'...
+[info] 
+[info] i  deploying hosting
+[debug] [2020-03-19T17:02:42.683Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/vaprosnik-mup/versions  
+
+[debug] [2020-03-19T17:02:44.456Z] <<< HTTP RESPONSE 200
+[info] i  hosting[vaprosnik-mup]: beginning deploy...
+[info] i  hosting[vaprosnik-mup]: found 20 files in build

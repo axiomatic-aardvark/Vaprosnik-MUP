@@ -2,8 +2,9 @@ import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import "./style.scss";
 import { Form, Button } from "react-bootstrap";
-import Done from "../../images/success.png";
-
+import DoneImg from "../../images/success.png";
+import ErrorImg from "../../images/error.png";
+import Loader from "react-loader-spinner";
 import { useAlert } from "react-alert";
 
 export default props => {
@@ -14,6 +15,10 @@ export default props => {
   const [text, setText] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  const [isError, setIsError] = useState(false);
+
+  const [isQuerySent, setIsQuerySent] = useState(false);
+
   const [isEditing, setEditing] = useState(true);
 
   const proxyUrl = "https://cors-anywhere.herokuapp.com/";
@@ -23,7 +28,8 @@ export default props => {
   const onFormSubmit = e => {
     e.preventDefault();
     pushQuestionToDB();
-    setIsSubmitted(true);
+    setIsQuerySent(true);
+    setIsError(false);
     setEditing(false);
   };
 
@@ -31,7 +37,7 @@ export default props => {
     axios
       .post(
         proxyUrl +
-          "https://us-central1-vaprosnik-mup.cloudfunctions.net/pushQuestionToDB",
+          "https://uks-central1-vaprosnik-mup.cloudfunctions.net/pushQuestionToDB",
         {
           option1: option1 + ",t",
           option2: option2 + ",f",
@@ -42,9 +48,13 @@ export default props => {
       )
       .then(function(response) {
         console.log(response);
+        setIsSubmitted(true);
+        alert.success("SUCCESS");
       })
       .catch(function(error) {
+        alert.error("ERROR");
         console.log(error);
+        setIsError(true);
       });
   };
 
@@ -58,19 +68,21 @@ export default props => {
   }, [isEditing]);
 
   useEffect(() => {
-    if (isSubmitted) {
+    if (isQuerySent && isSubmitted) {
       buttonRef.current.focus();
     }
   });
 
   const handleClick = () => {
     setEditing(true);
+    setIsQuerySent(false);
     setIsSubmitted(false);
+    setIsError(false);
   };
 
   const pressedKeyOnDone = e => {
     const { keyCode } = e;
-    if (isSubmitted && keyCode === 13) {
+    if (isQuerySent && keyCode === 13) {
       handleClick();
     }
   };
@@ -85,7 +97,7 @@ export default props => {
       >
         Назад
       </span>
-      {!isSubmitted ? (
+      {!isQuerySent ? (
         <Form onSubmit={e => onFormSubmit(e)}>
           <Form.Group className="group-question" controlId="questions">
             <Form.Label>Въпрос:</Form.Label>
@@ -132,9 +144,9 @@ export default props => {
             Изпрати
           </Button>
         </Form>
-      ) : (
+      ) : isSubmitted ? (
         <div className="done">
-          <img src={Done} alt="done-img" className="rotate-in-center"></img>
+          <img src={DoneImg} alt="done-img" className="rotate-in-center"></img>
           <span>Въпросът е успешно добавен!</span>
           <Button
             ref={buttonRef}
@@ -145,6 +157,31 @@ export default props => {
             Добави още един
           </Button>
         </div>
+      ) : isError ? (
+        <div className="error">
+          <img
+            src={ErrorImg}
+            alt="error-img"
+            className="rotate-in-center"
+          ></img>
+          <span>Неуспешно изпращане на въпрос! Моля, опитайте по-късно.</span>
+          <Button
+            ref={buttonRef}
+            className="error-btn"
+            onClick={() => handleClick()}
+            variant="primary"
+          >
+            Опитай пак
+          </Button>
+        </div>
+      ) : (
+        <Loader
+          type="ThreeDots"
+          color="#007bff"
+          height={100}
+          width={100}
+          timeout={1200000} //20 minutes
+        />
       )}
     </div>
   );
