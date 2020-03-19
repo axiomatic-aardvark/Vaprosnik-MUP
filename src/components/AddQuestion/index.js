@@ -27,10 +27,19 @@ export default props => {
 
   const onFormSubmit = e => {
     e.preventDefault();
-    pushQuestionToDB();
-    setIsQuerySent(true);
-    setIsError(false);
-    setEditing(false);
+
+    if (
+      option1 !== "" &&
+      (option2 !== "") & (option3 !== "") &&
+      option4 !== ""
+    ) {
+      pushQuestionToDB();
+      setIsQuerySent(true);
+      setIsError(false);
+      setEditing(false);
+    } else {
+      alert.error("EMPTY FIELD/S");
+    }
   };
 
   const pushQuestionToDB = () => {
@@ -55,6 +64,11 @@ export default props => {
         alert.error("ERROR");
         console.log(error);
         setIsError(true);
+
+        setOption1("");
+        setOption2("");
+        setOption3("");
+        setOption4("");
       });
   };
 
