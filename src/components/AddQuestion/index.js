@@ -37,7 +37,7 @@ export default props => {
     axios
       .post(
         proxyUrl +
-          "https://uks-central1-vaprosnik-mup.cloudfunctions.net/pushQuestionToDB",
+          "https://us-central1-vaprosnik-mup.cloudfunctions.net/pushQuestionToDB",
         {
           option1: option1 + ",t",
           option2: option2 + ",f",
