@@ -1,55 +1,57 @@
-import React, { useState, useContext, Fragment } from 'react';
-import GlobalContext from '../GlobalState/globalContext';
-import { Button } from 'react-bootstrap';
-import QuestionCard from './QuestionCard';
-import './style.scss';
+import React, { useState, useContext, Fragment } from "react";
+import GlobalContext from "../GlobalState/globalContext";
+import { Button } from "react-bootstrap";
+import QuestionCard from "./QuestionCard";
+import "./style.scss";
 
 export default props => {
-	const globalContext = useContext(GlobalContext);
-	const { questions } = globalContext;
+  const globalContext = useContext(GlobalContext);
+  const { questions } = globalContext;
 
-	const [isSubmitted, setIsSubmitted] = useState(false);
+  console.log(questions);
 
-	// const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-	const getResults = e => {
-		e.preventDefault();
-		setIsSubmitted(true);
-	};
+  // const [isModalOpen, setIsModalOpen] = useState(false);
 
-	// const onFinalSubmit = () => {
-	// 	setIsSubmitted(true);
-	// };
+  const getResults = e => {
+    e.preventDefault();
+    setIsSubmitted(true);
+  };
 
-	function shuffle(array) {
-		var currentIndex = array.length,
-			temporaryValue,
-			randomIndex;
+  // const onFinalSubmit = () => {
+  // 	setIsSubmitted(true);
+  // };
 
-		// While there remain elements to shuffle...
-		while (0 !== currentIndex) {
-			// Pick a remaining element...
-			randomIndex = Math.floor(Math.random() * currentIndex);
-			currentIndex -= 1;
+  function shuffle(array) {
+    var currentIndex = array.length,
+      temporaryValue,
+      randomIndex;
 
-			// And swap it with the current element.
-			temporaryValue = array[currentIndex];
-			array[currentIndex] = array[randomIndex];
-			array[randomIndex] = temporaryValue;
-		}
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
 
-		return array;
-	}
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
 
-	const genScrambledArr = (option1, option2, option3, option4) => {
-		const baseArr = [option1, option2, option3, option4];
+    return array;
+  }
 
-		return shuffle(baseArr);
-	};
+  const genScrambledArr = (option1, option2, option3, option4) => {
+    const baseArr = [option1, option2, option3, option4];
 
-	return (
-		<div className="questions-wrapper">
-			{/* {isModalOpen && !isSubmitted ? (
+    return shuffle(baseArr);
+  };
+
+  return (
+    <div className="questions-wrapper">
+      {/* {isModalOpen && !isSubmitted ? (
 				<div className="confirmation">
 					<span>Сигурни ли сте, че искате да приключите теста?</span>
 					<div className="buttons-wrapper">
@@ -74,55 +76,60 @@ export default props => {
 					</div>
 				</div>
 			) : null} */}
-			<span
-				className="back"
-				onClick={() => {
-					props.history.push('/');
-				}}
-			>
-				Назад
-			</span>
-			<ul className="questions">
-				{questions.questions ? (
-					questions.questions.map((q, i) => {
-						let scrambledArr = genScrambledArr(q.option1, q.option2, q.option3, q.option4);
+      <span
+        className="back"
+        onClick={() => {
+          props.history.push("/");
+        }}
+      >
+        Назад
+      </span>
+      <ul className="questions">
+        {questions.questions ? (
+          questions.questions.map((q, i) => {
+            let scrambledArr = genScrambledArr(
+              q.option1,
+              q.option2,
+              q.option3,
+              q.option4
+            );
 
-						return (
-							<QuestionCard
-								text={q.text}
-								option1={scrambledArr[0]}
-								option2={scrambledArr[1]}
-								option3={scrambledArr[2]}
-								option4={scrambledArr[3]}
-								isSubmitted={isSubmitted}
-								key={i}
-								className="question-card"
-							/>
-						);
-					})
-				) : (
-					<span>Моля изчакайте...</span>
-				)}
-				{questions.questions ? (
-					<Fragment>
-						{/* {isSubmitted ? (
+            return (
+              <QuestionCard
+                text={q.text}
+                option1={scrambledArr[0]}
+                option2={scrambledArr[1]}
+                option3={scrambledArr[2]}
+                option4={scrambledArr[3]}
+                isSubmitted={isSubmitted}
+                key={i}
+                className="question-card"
+              />
+            );
+          })
+        ) : (
+          <span>Моля изчакайте...</span>
+        )}
+        {questions.questions ? (
+          <Fragment>
+            {/* {isSubmitted ? (
 							<Fragment>
 								<span className="green">{`Брой верни отговори: `}</span>
 								<span className="red">{`Брой грешни отговори: `}</span>
 							</Fragment>
 						) : null} */}
-						<Button
-							className="submit-btn"
-							onClick={e => {
-								isSubmitted ? props.history.push('/') : getResults(e);
-							}}
-							variant={isSubmitted ? 'success' : 'primary'}
-						>
-							{isSubmitted ? 'Готово' : 'Край'}
-						</Button>
-					</Fragment>
-				) : null}
-			</ul>
-		</div>
-	);
+            <Button
+              className="submit-btn"
+              onClick={e => {
+                isSubmitted ? props.history.push("/") : getResults(e);
+              }}
+              variant={isSubmitted ? "success" : "primary"}
+            >
+              {isSubmitted ? "Готово" : "Край"}
+            </Button>
+          </Fragment>
+        ) : null}
+      </ul>
+    </div>
+  );
 };
