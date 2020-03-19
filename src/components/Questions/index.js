@@ -10,7 +10,7 @@ export default props => {
   const globalContext = useContext(GlobalContext);
   const { questions } = globalContext;
 
-  console.log(questions);
+  console.log("Q ", questions);
 
   const [isSubmitted, setIsSubmitted] = useState(false);
 

@@ -60,16 +60,16 @@ export default props => {
         console.log(response);
         setIsSubmitted(true);
         alert.success("SUCCESS");
-      })
-      .catch(function(error) {
-        alert.error("ERROR");
-        console.log(error);
-        setIsError(true);
 
         setOption1("");
         setOption2("");
         setOption3("");
         setOption4("");
+      })
+      .catch(function(error) {
+        alert.error("ERROR");
+        console.log(error);
+        setIsError(true);
       });
   };
 
