@@ -29,6 +29,7 @@ export default props => {
     e.preventDefault();
 
     if (
+      text !== "" &&
       option1 !== "" &&
       (option2 !== "") & (option3 !== "") &&
       option4 !== ""
