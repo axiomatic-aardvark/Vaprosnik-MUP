@@ -65,6 +65,7 @@ export default props => {
         setOption2("");
         setOption3("");
         setOption4("");
+        setText("");
       })
       .catch(function(error) {
         alert.error("ERROR");
@@ -121,6 +122,7 @@ export default props => {
               type="text"
               as="textarea"
               rows="5"
+              value={text}
               ref={inputRef}
               onChange={e => setText(e.target.value)}
             />
@@ -130,6 +132,7 @@ export default props => {
             <Form.Control
               required
               type="text"
+              value={option1}
               onChange={e => setOption1(e.target.value)}
             />
           </Form.Group>
@@ -138,20 +141,25 @@ export default props => {
             <Form.Control
               required
               type="text"
+              value={option2}
               onChange={e => setOption2(e.target.value)}
             />
           </Form.Group>
           <Form.Group controlId="option3">
             <Form.Label>Грешен Отговор 2</Form.Label>
             <Form.Control
+              required
               type="text"
+              value={option3}
               onChange={e => setOption3(e.target.value)}
             />
           </Form.Group>
           <Form.Group controlId="option4">
             <Form.Label>Грешен Отговор 3</Form.Label>
             <Form.Control
+              required
               type="text"
+              value={option4}
               onChange={e => setOption4(e.target.value)}
             />
           </Form.Group>
