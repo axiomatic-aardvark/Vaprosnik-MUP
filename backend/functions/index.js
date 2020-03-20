@@ -11,8 +11,10 @@ exports.getQuestions = functions.https.onRequest((req, res) => {
     .get()
     .then(data => {
       let questions = [];
+
       data.forEach(doc => {
-        questions.push(doc.data());
+        const id = doc._ref._path.segments[1];
+        questions.push({ id: id, data: doc.data() });
       });
       return res.json(questions);
     })

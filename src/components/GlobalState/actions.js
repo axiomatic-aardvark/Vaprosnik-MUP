@@ -24,7 +24,7 @@ export const questionsUpdate = async () => {
 
   const affixWithAtSign = arr => {
     return arr.map(element => {
-      const { option1, option2, option3, option4, text } = element;
+      const { option1, option2, option3, option4, text, id } = element;
 
       if (text !== "kj") {
         const index1 = option1.lastIndexOf(",");
@@ -59,7 +59,17 @@ export const questionsUpdate = async () => {
     });
   };
 
+  const getDataOnly = arr => {
+    return arr.map(e => {
+      let data = e.data;
+      data.id = e.id;
+      return data;
+    });
+  };
+
   const getLimitedQuestions = arr => {
+    arr = getDataOnly(arr);
+
     let scrambledQuestions = shuffle(arr);
     scrambledQuestions = scrambledQuestions.slice(0, 10);
 
@@ -74,6 +84,7 @@ export const questionsUpdate = async () => {
       proxyUrl +
         "https://us-central1-vaprosnik-mup.cloudfunctions.net/getQuestions"
     );
+
     return {
       type: UPDATE_QUESTIONS,
       payload: { questions: getLimitedQuestions(res.data) }

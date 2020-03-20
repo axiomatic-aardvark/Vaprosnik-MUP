@@ -10,8 +10,6 @@ export default props => {
   const globalContext = useContext(GlobalContext);
   const { questions } = globalContext;
 
-  console.log("Q ", questions);
-
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   // const [isModalOpen, setIsModalOpen] = useState(false);
