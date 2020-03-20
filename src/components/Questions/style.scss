@@ -52,7 +52,17 @@ div {
     height: 75vh;
 
     .card {
+      position: relative;
       z-index: 10;
+
+      .edit {
+        position: absolute;
+        right: 10px;
+        top: 1.5px;
+        text-decoration: underline;
+        font-size: 14px;
+        cursor: pointer;
+      }
 
       .title {
         font-size: 15px;

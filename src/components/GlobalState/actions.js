@@ -63,6 +63,8 @@ export const questionsUpdate = async () => {
     let scrambledQuestions = shuffle(arr);
     scrambledQuestions = scrambledQuestions.slice(0, 10);
 
+    console.log("BASE ", scrambledQuestions);
+
     return affixWithAtSign(scrambledQuestions);
   };
 

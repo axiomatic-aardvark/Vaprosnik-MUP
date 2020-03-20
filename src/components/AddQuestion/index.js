@@ -8,6 +8,7 @@ import Loader from "react-loader-spinner";
 import { useAlert } from "react-alert";
 
 export default props => {
+  console.log("Obicham Elcho <3");
   const [option1, setOption1] = useState("");
   const [option2, setOption2] = useState("");
   const [option3, setOption3] = useState("");
