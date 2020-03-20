@@ -27,10 +27,6 @@ export const questionsUpdate = async () => {
       const { option1, option2, option3, option4, text } = element;
 
       if (text !== "kj") {
-        const textPatches = text.split("\\d\\.");
-
-        const newText = textPatches.join("\n");
-
         const index1 = option1.lastIndexOf(",");
         const index2 = option2.lastIndexOf(",");
         const index3 = option3.lastIndexOf(",");
@@ -56,7 +52,6 @@ export const questionsUpdate = async () => {
 
         element.option4 = frontPart4 + backPart4;
 
-        element.text = newText;
         return element;
       }
 
