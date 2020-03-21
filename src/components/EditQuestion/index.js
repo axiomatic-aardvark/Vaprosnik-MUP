@@ -10,7 +10,8 @@ export default props => {
   const [option4, setOption4] = useState("");
   const [text, setText] = useState("");
 
-  const onSubmitEdit = () => {
+  const onSubmitEdit = e => {
+    e.preventDefault();
     console.log("edit init");
   };
 

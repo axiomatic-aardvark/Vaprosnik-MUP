@@ -24,7 +24,7 @@ export const questionsUpdate = async () => {
 
   const affixWithAtSign = arr => {
     return arr.map(element => {
-      const { option1, option2, option3, option4, text, id } = element;
+      const { option1, option2, option3, option4, text } = element;
 
       if (text !== "kj") {
         const index1 = option1.lastIndexOf(",");
