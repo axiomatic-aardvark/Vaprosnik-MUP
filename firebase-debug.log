@@ -1,0 +1,17 @@
+[debug] [2020-03-21T11:10:01.209Z] ----------------------------------------------------------------------
+[debug] [2020-03-21T11:10:01.210Z] Command:       /home/arthas/.nvm/versions/node/v10.13.0/bin/node /home/arthas/.nvm/versions/node/v10.13.0/bin/firebase deploy
+[debug] [2020-03-21T11:10:01.211Z] CLI Version:   7.11.0
+[debug] [2020-03-21T11:10:01.211Z] Platform:      linux
+[debug] [2020-03-21T11:10:01.211Z] Node Version:  v10.13.0
+[debug] [2020-03-21T11:10:01.211Z] Time:          Sat Mar 21 2020 13:10:01 GMT+0200 (Eastern European Standard Time)
+[debug] [2020-03-21T11:10:01.211Z] ----------------------------------------------------------------------
+[debug] [2020-03-21T11:10:01.211Z] 
+[debug] [2020-03-21T11:10:01.215Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-03-21T11:10:01.215Z] > authorizing via signed-in user
+[debug] [2020-03-21T11:10:01.215Z] [iam] checking project vaprosnik-mup for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2020-03-21T11:10:01.216Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-03-21T11:10:01.216Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-03-21T11:10:01.544Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-21T11:10:01.550Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/vaprosnik-mup:testIamPermissions  
+

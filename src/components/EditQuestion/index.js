@@ -3,7 +3,7 @@ import { Form, Button } from "react-bootstrap";
 
 import "./style.scss";
 
-export default () => {
+export default props => {
   const [option1, setOption1] = useState("");
   const [option2, setOption2] = useState("");
   const [option3, setOption3] = useState("");
@@ -16,6 +16,15 @@ export default () => {
 
   return (
     <Form onSubmit={e => onSubmitEdit(e)}>
+      <span
+        className="back"
+        onClick={() => {
+          console.log(props);
+          props.history.push("/questions");
+        }}
+      >
+        Назад
+      </span>
       <Form.Group className="group-question" controlId="questions">
         <Form.Label>Редактирай Въпрос:</Form.Label>
         <Form.Control
