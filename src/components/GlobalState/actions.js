@@ -59,16 +59,16 @@ export const questionsUpdate = async () => {
     });
   };
 
-  const getDataOnly = arr => {
-    return arr.map(e => {
-      let data = e.data;
-      data.id = e.id;
-      return data;
-    });
-  };
+  // const getDataOnly = arr => {
+  //   return arr.map(e => {
+  //     let data = e.data;
+  //     data.id = e.id;
+  //     return data;
+  //   });
+  // };
 
   const getLimitedQuestions = arr => {
-    arr = getDataOnly(arr);
+    // arr = getDataOnly(arr);
 
     let scrambledQuestions = shuffle(arr);
     scrambledQuestions = scrambledQuestions.slice(0, 10);
@@ -79,15 +79,13 @@ export const questionsUpdate = async () => {
   };
 
   try {
-    const proxyUrl = "https://cors-anywhere.herokuapp.com/";
-    const res = await axios.get(
-      proxyUrl +
-        "https://us-central1-vaprosnik-mup.cloudfunctions.net/getQuestions"
-    );
+    // const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+    const res = await axios.get("http://192.168.43.175:5000/questions");
+    console.log(res.data);
 
     return {
       type: UPDATE_QUESTIONS,
-      payload: { questions: getLimitedQuestions(res.data) }
+      payload: getLimitedQuestions(res.data)
     };
   } catch (error) {
     return {

@@ -22,7 +22,7 @@ export default props => {
 
   const [isEditing, setEditing] = useState(true);
 
-  const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+  // const proxyUrl = "https://cors-anywhere.herokuapp.com/";
 
   const alert = useAlert();
 
@@ -46,17 +46,13 @@ export default props => {
 
   const pushQuestionToDB = () => {
     axios
-      .post(
-        proxyUrl +
-          "https://us-central1-vaprosnik-mup.cloudfunctions.net/pushQuestionToDB",
-        {
-          option1: option1 + ",t",
-          option2: option2 + ",f",
-          option3: option3 + ",f",
-          option4: option4 + ",f",
-          text: text
-        }
-      )
+      .post("http://192.168.43.175:5000/questions/add", {
+        option1: option1 + ",t",
+        option2: option2 + ",f",
+        option3: option3 + ",f",
+        option4: option4 + ",f",
+        text: text
+      })
       .then(function(response) {
         console.log(response);
         setIsSubmitted(true);

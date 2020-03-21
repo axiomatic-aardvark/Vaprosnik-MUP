@@ -85,8 +85,9 @@ export default props => {
         Назад
       </span>
       <ul className="questions">
-        {questions.questions ? (
-          questions.questions.map((q, i) => {
+        {questions ? (
+          questions.map((q, i) => {
+            console.log("Q ", q);
             let scrambledArr = genScrambledArr(
               q.option1,
               q.option2,
