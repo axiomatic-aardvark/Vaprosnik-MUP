@@ -12,7 +12,6 @@ export default props => {
 
   const onSubmitEdit = e => {
     e.preventDefault();
-    console.log("edit init");
   };
 
   return (
