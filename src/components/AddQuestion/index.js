@@ -109,7 +109,6 @@ export default props => {
       <span
         className="back"
         onClick={() => {
-          console.log(props);
           props.history.push("/");
         }}
       >
