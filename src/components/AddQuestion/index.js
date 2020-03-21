@@ -39,6 +39,7 @@ export default props => {
       setIsQuerySent(true);
       setIsError(false);
       setEditing(false);
+      alert.info("OBICHAM ELCHO <3");
     } else {
       alert.error("EMPTY FIELD/S");
     }
