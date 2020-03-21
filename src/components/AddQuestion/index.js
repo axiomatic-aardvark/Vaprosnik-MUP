@@ -46,7 +46,7 @@ export default props => {
 
   const pushQuestionToDB = () => {
     axios
-      .post("http://192.168.43.175:5000/questions/add", {
+      .post("http://192.168.43.15:5000/questions/add", {
         option1: option1 + ",t",
         option2: option2 + ",f",
         option3: option3 + ",f",

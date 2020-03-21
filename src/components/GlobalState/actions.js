@@ -80,7 +80,7 @@ export const questionsUpdate = async () => {
 
   try {
     // const proxyUrl = "https://cors-anywhere.herokuapp.com/";
-    const res = await axios.get("http://192.168.43.175:5000/questions");
+    const res = await axios.get("http://192.168.43.15:5000/questions");
     console.log(res.data);
 
     return {
