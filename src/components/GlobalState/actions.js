@@ -59,17 +59,7 @@ export const questionsUpdate = async () => {
     });
   };
 
-  // const getDataOnly = arr => {
-  //   return arr.map(e => {
-  //     let data = e.data;
-  //     data.id = e.id;
-  //     return data;
-  //   });
-  // };
-
   const getLimitedQuestions = arr => {
-    // arr = getDataOnly(arr);
-
     let scrambledQuestions = shuffle(arr);
     scrambledQuestions = scrambledQuestions.slice(0, 10);
 
