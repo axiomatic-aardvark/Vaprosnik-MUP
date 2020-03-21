@@ -7,6 +7,7 @@ import GlobalState from "./components/GlobalState";
 import Home from "./components/Home";
 import Questions from "./components/Questions";
 import AddQuestion from "./components/AddQuestion";
+import EditQuestion from "./components/EditQuestion";
 
 import "./App.scss";
 
@@ -28,6 +29,7 @@ function App() {
             <Route path="/" exact component={Home} />
             <Route path="/questions" exact component={Questions} />
             <Route path="/addQuestion" exact component={AddQuestion} />
+            <Route path="/editQuestion/" exact component={EditQuestion} />
           </Switch>
         </Router>
       </GlobalState>

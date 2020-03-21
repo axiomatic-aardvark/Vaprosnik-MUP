@@ -24,20 +24,16 @@ export default props => {
     }
   };
 
-  const handleEdit = () => {
-    console.log(props);
-  };
-
   return (
     <div className="card">
       <span className="title">{props.text}</span>
       <span
         className="edit"
         onClick={() => {
-          handleEdit();
+          props.history.push("/editQuestion");
         }}
       >
-        Edit
+        Редактирай
       </span>
       {!props.isSubmitted ? (
         <Fragment>

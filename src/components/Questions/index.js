@@ -102,7 +102,9 @@ export default props => {
                 option3={scrambledArr[2]}
                 option4={scrambledArr[3]}
                 isSubmitted={isSubmitted}
+                id={q.id}
                 key={i}
+                history={props.history}
                 className="question-card"
               />
             );
