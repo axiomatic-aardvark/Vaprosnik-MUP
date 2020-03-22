@@ -33,7 +33,13 @@ export default props => {
         <span
           className="edit"
           onClick={() => {
-            props.history.push("/editQuestion");
+            props.history.push("/editQuestion", {
+              option1: props.option1,
+              text: props.text,
+              option2: props.option2,
+              option3: props.option3,
+              option4: props.option4
+            });
           }}
         >
           Редактирай

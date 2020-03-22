@@ -11,16 +11,10 @@ export default props => {
 
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // const [isModalOpen, setIsModalOpen] = useState(false);
-
   const getResults = e => {
     e.preventDefault();
     setIsSubmitted(true);
   };
-
-  // const onFinalSubmit = () => {
-  // 	setIsSubmitted(true);
-  // };
 
   function shuffle(array) {
     var currentIndex = array.length,
@@ -78,7 +72,7 @@ export default props => {
                   option3={scrambledArr[2]}
                   option4={scrambledArr[3]}
                   isSubmitted={isSubmitted}
-                  id={q.id}
+                  id={q._id}
                   key={i}
                   num={i}
                   history={props.history}

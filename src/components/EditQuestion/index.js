@@ -4,11 +4,13 @@ import { Form, Button } from "react-bootstrap";
 import "./style.scss";
 
 export default props => {
-  const [option1, setOption1] = useState("");
-  const [option2, setOption2] = useState("");
-  const [option3, setOption3] = useState("");
-  const [option4, setOption4] = useState("");
-  const [text, setText] = useState("");
+  const state = props.location.state;
+
+  const [option1, setOption1] = useState(state.option1);
+  const [option2, setOption2] = useState(state.option2);
+  const [option3, setOption3] = useState(state.option3);
+  const [option4, setOption4] = useState(state.option4);
+  const [text, setText] = useState(state.text);
 
   const onSubmitEdit = e => {
     e.preventDefault();
@@ -40,7 +42,7 @@ export default props => {
         <Form.Control
           required
           type="text"
-          value={option1}
+          value={option1.split("@")[0]}
           onChange={e => setOption1(e.target.value)}
         />
       </Form.Group>
@@ -49,7 +51,7 @@ export default props => {
         <Form.Control
           required
           type="text"
-          value={option2}
+          value={option2.split("@")[0]}
           onChange={e => setOption2(e.target.value)}
         />
       </Form.Group>
@@ -58,7 +60,7 @@ export default props => {
         <Form.Control
           required
           type="text"
-          value={option3}
+          value={option3.split("@")[0]}
           onChange={e => setOption3(e.target.value)}
         />
       </Form.Group>
@@ -67,7 +69,7 @@ export default props => {
         <Form.Control
           required
           type="text"
-          value={option4}
+          value={option4.split("@")[0]}
           onChange={e => setOption4(e.target.value)}
         />
       </Form.Group>
