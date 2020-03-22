@@ -1,9 +1,7 @@
 import React, { useState, useContext } from "react";
 import GlobalContext from "../GlobalState/globalContext";
 import Loader from "react-loader-spinner";
-import { Scrollbars } from "react-custom-scrollbars";
 
-import { Button } from "react-bootstrap";
 import QuestionCard from "./QuestionCard";
 import "./style.scss";
 
@@ -82,21 +80,14 @@ export default props => {
                   isSubmitted={isSubmitted}
                   id={q.id}
                   key={i}
+                  num={i}
                   history={props.history}
                   className="question-card"
+                  getResults={getResults}
                 />
               );
             })}
           </ul>
-          <Button
-            className="submit-btn"
-            onClick={e => {
-              isSubmitted ? window.location.reload() : getResults(e);
-            }}
-            variant={isSubmitted ? "success" : "primary"}
-          >
-            {isSubmitted ? "Зареди нови въпроси" : "Край"}
-          </Button>
         </>
       ) : (
         <>
