@@ -70,7 +70,9 @@ export const questionsUpdate = async () => {
 
   try {
     // const proxyUrl = "https://cors-anywhere.herokuapp.com/";
-    const res = await axios.get("https://servervaprosnikmup.xyz/questions");
+    const res = await axios.get(
+      "https://server-vaprosnik.herokuapp.com/questions"
+    );
     console.log(res.data);
 
     return {

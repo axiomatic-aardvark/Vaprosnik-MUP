@@ -45,7 +45,7 @@ export default props => {
 
   const pushQuestionToDB = () => {
     axios
-      .post("https://servervaprosnikmup.xyz/questions/add", {
+      .post("https://server-vaprosnik.herokuapp.com/questions/add", {
         option1: option1 + ",t",
         option2: option2 + ",f",
         option3: option3 + ",f",
