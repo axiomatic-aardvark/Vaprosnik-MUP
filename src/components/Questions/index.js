@@ -1,6 +1,7 @@
-import React, { useState, useContext, Fragment } from "react";
+import React, { useState, useContext } from "react";
 import GlobalContext from "../GlobalState/globalContext";
 import Loader from "react-loader-spinner";
+import { Scrollbars } from "react-custom-scrollbars";
 
 import { Button } from "react-bootstrap";
 import QuestionCard from "./QuestionCard";
@@ -51,31 +52,6 @@ export default props => {
 
   return (
     <div className="questions-wrapper">
-      {/* {isModalOpen && !isSubmitted ? (
-				<div className="confirmation">
-					<span>Сигурни ли сте, че искате да приключите теста?</span>
-					<div className="buttons-wrapper">
-						<Button
-							className="submit-btn"
-							onClick={() => {
-								onFinalSubmit();
-							}}
-							variant="success"
-						>
-							Да
-						</Button>
-						<Button
-							className="submit-btn"
-							onClick={() => {
-								setIsModalOpen(false);
-							}}
-							variant="danger"
-						>
-							Не
-						</Button>
-					</div>
-				</div>
-			) : null} */}
       <span
         className="back"
         onClick={() => {
@@ -84,66 +60,59 @@ export default props => {
       >
         Назад
       </span>
-      <ul className="questions">
-        {questions ? (
-          questions.map((q, i) => {
-            let scrambledArr = genScrambledArr(
-              q.option1,
-              q.option2,
-              q.option3,
-              q.option4
-            );
 
-            return (
-              <QuestionCard
-                text={q.text}
-                option1={scrambledArr[0]}
-                option2={scrambledArr[1]}
-                option3={scrambledArr[2]}
-                option4={scrambledArr[3]}
-                isSubmitted={isSubmitted}
-                id={q.id}
-                key={i}
-                history={props.history}
-                className="question-card"
-              />
-            );
-          })
-        ) : (
-          <>
-            <Loader
-              type="ThreeDots"
-              color="#007bff"
-              height={100}
-              width={100}
-              timeout={1200000} //20 minutes
-            />
-            <span>
-              *Ако въпросите не заредят до 2-3 мин има проблем с базата данни.
-              :( Моля опитайте по-късно.
-            </span>
-          </>
-        )}
-        {questions.questions ? (
-          <Fragment>
-            {/* {isSubmitted ? (
-							<Fragment>
-								<span className="green">{`Брой верни отговори: `}</span>
-								<span className="red">{`Брой грешни отговори: `}</span>
-							</Fragment>
-						) : null} */}
-            <Button
-              className="submit-btn"
-              onClick={e => {
-                isSubmitted ? window.location.reload() : getResults(e);
-              }}
-              variant={isSubmitted ? "success" : "primary"}
-            >
-              {isSubmitted ? "Зареди нови въпроси" : "Край"}
-            </Button>
-          </Fragment>
-        ) : null}
-      </ul>
+      {questions ? (
+        <>
+          <ul className="questions">
+            {questions.map((q, i) => {
+              let scrambledArr = genScrambledArr(
+                q.option1,
+                q.option2,
+                q.option3,
+                q.option4
+              );
+
+              return (
+                <QuestionCard
+                  text={q.text}
+                  option1={scrambledArr[0]}
+                  option2={scrambledArr[1]}
+                  option3={scrambledArr[2]}
+                  option4={scrambledArr[3]}
+                  isSubmitted={isSubmitted}
+                  id={q.id}
+                  key={i}
+                  history={props.history}
+                  className="question-card"
+                />
+              );
+            })}
+          </ul>
+          <Button
+            className="submit-btn"
+            onClick={e => {
+              isSubmitted ? window.location.reload() : getResults(e);
+            }}
+            variant={isSubmitted ? "success" : "primary"}
+          >
+            {isSubmitted ? "Зареди нови въпроси" : "Край"}
+          </Button>
+        </>
+      ) : (
+        <>
+          <Loader
+            type="ThreeDots"
+            color="#007bff"
+            height={100}
+            width={100}
+            timeout={1200000} //20 minutes
+          />
+          <span>
+            *Ако въпросите не заредят до 2-3 мин има проблем с базата данни. :(
+            Моля опитайте по-късно.
+          </span>
+        </>
+      )}
     </div>
   );
 };
