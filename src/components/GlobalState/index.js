@@ -1,38 +1,38 @@
-import React, { useReducer, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import SwapContext from './globalContext';
-import GlobalReducer from './globalReducer';
-import { questionsUpdate } from './actions';
+import React, { useReducer, useEffect } from "react";
+import PropTypes from "prop-types";
+import SwapContext from "./globalContext";
+import GlobalReducer from "./globalReducer";
+import { questionsUpdate } from "./actions";
 
 const GlobalState = props => {
-	const initialState = {
-		questions: [],
-	};
+  const initialState = {
+    questions: []
+  };
 
-	const [state, dispatch] = useReducer(GlobalReducer, initialState);
+  const [state, dispatch] = useReducer(GlobalReducer, initialState);
 
-	const onQuestionsUpdate = async () => dispatch(await questionsUpdate());
+  const onQuestionsUpdate = async () => dispatch(await questionsUpdate());
 
-	useEffect(() => {
-		onQuestionsUpdate();
-	}, []);
+  useEffect(() => {
+    onQuestionsUpdate();
+  }, []);
 
-	return (
-		<SwapContext.Provider
-			value={{
-				questions: state.questions,
+  return (
+    <SwapContext.Provider
+      value={{
+        questions: state.questions,
 
-				// actions
-				onQuestionsUpdate,
-			}}
-		>
-			{props.children}
-		</SwapContext.Provider>
-	);
+        // actions
+        onQuestionsUpdate
+      }}
+    >
+      {props.children}
+    </SwapContext.Provider>
+  );
 };
 
 GlobalState.propTypes = {
-	children: PropTypes.any,
+  children: PropTypes.any
 };
 
 export default GlobalState;

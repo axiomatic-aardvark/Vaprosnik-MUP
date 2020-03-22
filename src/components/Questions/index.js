@@ -54,35 +54,33 @@ export default props => {
       </span>
 
       {questions ? (
-        <>
-          <ul className="questions">
-            {questions.map((q, i) => {
-              let scrambledArr = genScrambledArr(
-                q.option1,
-                q.option2,
-                q.option3,
-                q.option4
-              );
+        <ul className="questions">
+          {questions.map((q, i) => {
+            let scrambledArr = genScrambledArr(
+              q.option1,
+              q.option2,
+              q.option3,
+              q.option4
+            );
 
-              return (
-                <QuestionCard
-                  text={q.text}
-                  option1={scrambledArr[0]}
-                  option2={scrambledArr[1]}
-                  option3={scrambledArr[2]}
-                  option4={scrambledArr[3]}
-                  isSubmitted={isSubmitted}
-                  id={q._id}
-                  key={i}
-                  num={i}
-                  history={props.history}
-                  className="question-card"
-                  getResults={getResults}
-                />
-              );
-            })}
-          </ul>
-        </>
+            return (
+              <QuestionCard
+                text={q.text}
+                option1={scrambledArr[0]}
+                option2={scrambledArr[1]}
+                option3={scrambledArr[2]}
+                option4={scrambledArr[3]}
+                isSubmitted={isSubmitted}
+                id={q._id}
+                key={i}
+                num={i}
+                history={props.history}
+                className="question-card"
+                getResults={getResults}
+              />
+            );
+          })}
+        </ul>
       ) : (
         <>
           <Loader
