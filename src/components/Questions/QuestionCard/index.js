@@ -34,6 +34,7 @@ export default props => {
           className="edit"
           onClick={() => {
             props.history.push("/editQuestion", {
+              id: props.id,
               option1: props.option1,
               text: props.text,
               option2: props.option2,
