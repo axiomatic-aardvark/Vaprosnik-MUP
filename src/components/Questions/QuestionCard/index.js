@@ -45,6 +45,21 @@ export default props => {
         >
           Редактирай
         </span>
+        <span
+          className="delete"
+          onClick={() => {
+            props.history.push("/deleteQuestion", {
+              id: props.id,
+              option1: props.option1,
+              text: props.text,
+              option2: props.option2,
+              option3: props.option3,
+              option4: props.option4
+            });
+          }}
+        >
+          Изтрий
+        </span>
         {!props.isSubmitted ? (
           <Fragment>
             <InputGroup className="mb-3">

@@ -8,6 +8,7 @@ import Home from "./components/Home";
 import Questions from "./components/Questions";
 import AddQuestion from "./components/AddQuestion";
 import EditQuestion from "./components/EditQuestion";
+import DeleteQuestion from "./components/DeleteQuestion";
 
 import "./App.scss";
 
@@ -30,6 +31,7 @@ function App() {
             <Route path="/questions" exact component={Questions} />
             <Route path="/addQuestion" exact component={AddQuestion} />
             <Route path="/editQuestion/" exact component={EditQuestion} />
+            <Route path="/deleteQuestion/" exact component={DeleteQuestion} />
           </Switch>
         </Router>
       </GlobalState>

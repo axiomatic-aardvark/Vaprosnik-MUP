@@ -39,6 +39,15 @@ div {
         cursor: pointer;
       }
 
+      .delete {
+        position: absolute;
+        left: 10px;
+        top: 1.5px;
+        text-decoration: underline;
+        font-size: 14px;
+        cursor: pointer;
+      }
+
       .title {
         font-size: 15px;
         margin-bottom: 5px;
@@ -53,7 +62,7 @@ div {
       background-color: bisque;
       margin-bottom: 25px;
       margin-left: 20px;
-      padding-top: 20px;
+      padding-top: 35px;
       padding-bottom: 20px;
 
       .form-control {
