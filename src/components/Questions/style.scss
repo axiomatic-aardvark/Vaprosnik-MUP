@@ -27,14 +27,29 @@ div {
     height: 75vh;
 
     .card {
+      border: none;
       position: relative;
       z-index: 10;
       align-items: flex-start;
 
+      border-radius: 50px;
+      background: #ffe4c4;
+      box-shadow: 20px 20px 60px #d9c2a7, -20px -20px 60px #ffffe1;
+
+      .foot-note {
+        color: #800000;
+        width: 100%;
+        margin-bottom: -15px;
+        margin-top: 5px;
+        font-size: 12px;
+        font-weight: normal;
+      }
+
       .edit {
         position: absolute;
-        right: 10px;
-        top: 1.5px;
+        left: 25px;
+        top: 8px;
+
         text-decoration: underline;
         font-size: 14px;
         cursor: pointer;
@@ -42,8 +57,10 @@ div {
 
       .delete {
         position: absolute;
-        left: 10px;
-        top: 1.5px;
+
+        right: 25px;
+        top: 8px;
+
         text-decoration: underline;
         font-size: 14px;
         cursor: pointer;
@@ -52,6 +69,7 @@ div {
       .title {
         font-size: 15px;
         margin-bottom: 5px;
+        color: #800000;
 
         text-align: left;
         white-space: pre-line;
@@ -63,14 +81,15 @@ div {
       background-color: bisque;
       margin-bottom: 25px;
       margin-left: 20px;
-      padding-top: 35px;
-      padding-bottom: 20px;
+      padding-top: 40px;
+      padding-bottom: 35px;
 
       .form-control {
         background: none;
         border: none;
         // max-width: 290px;
         font-size: 14px;
+        color: #800000;
       }
 
       .input-group {
@@ -100,6 +119,11 @@ div {
         margin-top: 20px;
         max-width: 300px;
         font-size: 15px;
+      }
+
+      .edit-icon,
+      .delete-icon {
+        width: 15px;
       }
     }
 

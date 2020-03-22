@@ -2,6 +2,9 @@ import React, { useState, Fragment } from "react";
 import { InputGroup, FormControl } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 
+import editImg from "../../../images/edit.png";
+import deleteImg from "../../../images/delete.png";
+
 export default props => {
   const [selectedOption, setSelectedOption] = useState("");
   const { getResults, isSubmitted } = props;
@@ -43,7 +46,7 @@ export default props => {
             });
           }}
         >
-          Редактирай
+          <img src={editImg} alt="edit-icon" className="edit-icon"></img>
         </span>
         <span
           className="delete"
@@ -58,7 +61,7 @@ export default props => {
             });
           }}
         >
-          Изтрий
+          <img src={deleteImg} alt="bin-icon" className="delete-icon"></img>
         </span>
         {!props.isSubmitted ? (
           <Fragment>
@@ -122,6 +125,7 @@ export default props => {
                 disabled={true}
               />
             </InputGroup>
+            <span className="foot-note">- {props.num + 1} -</span>
           </Fragment>
         ) : selectedOption.split("@")[1] === "t" ? (
           <Fragment>

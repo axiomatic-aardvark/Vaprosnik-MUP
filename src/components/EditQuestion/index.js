@@ -3,7 +3,7 @@ import axios from "axios";
 import { Form, Button } from "react-bootstrap";
 import Loader from "react-loader-spinner";
 import { useAlert } from "react-alert";
-
+import backImg from "../../images/back.png";
 import DoneImg from "../../images/success.png";
 import ErrorImg from "../../images/error.png";
 
@@ -113,7 +113,7 @@ export default props => {
           props.history.push("/questions");
         }}
       >
-        Назад
+        <img className="back-icon" alt="back=-icon" src={backImg}></img>
       </span>
       {!isQuerySent ? (
         <Form onSubmit={e => onSubmitEdit(e)}>

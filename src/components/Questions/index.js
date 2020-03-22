@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import GlobalContext from "../GlobalState/globalContext";
 import Loader from "react-loader-spinner";
-
+import backImg from "../../images/back.png";
 import QuestionCard from "./QuestionCard";
 import "./style.scss";
 
@@ -50,7 +50,7 @@ export default props => {
           props.history.push("/");
         }}
       >
-        Назад
+        <img className="back-icon" alt="back=-icon" src={backImg}></img>
       </span>
 
       {questions ? (

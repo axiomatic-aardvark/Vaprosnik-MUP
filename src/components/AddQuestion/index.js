@@ -1,11 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
-import "./style.scss";
 import { Form, Button } from "react-bootstrap";
 import DoneImg from "../../images/success.png";
 import ErrorImg from "../../images/error.png";
 import Loader from "react-loader-spinner";
 import { useAlert } from "react-alert";
+
+import backImg from "../../images/back.png";
+import "./style.scss";
 
 export default props => {
   const [option1, setOption1] = useState("");
@@ -107,7 +109,7 @@ export default props => {
           props.history.push("/");
         }}
       >
-        Назад
+        <img className="back-icon" alt="back=-icon" src={backImg}></img>
       </span>
       {!isQuerySent ? (
         <Form onSubmit={e => onFormSubmit(e)}>
