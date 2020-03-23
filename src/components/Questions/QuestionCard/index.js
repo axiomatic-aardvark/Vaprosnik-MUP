@@ -145,7 +145,7 @@ export default props => {
           </Fragment>
         )}
       </div>
-      {props.num === 9 ? (
+      {props.num === 14 ? (
         <Button
           className="submit-btn"
           onClick={e => {
