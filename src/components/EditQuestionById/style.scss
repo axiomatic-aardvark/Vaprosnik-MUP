@@ -1,0 +1,119 @@
+.edit-by-id-container{
+    display: flex;
+    flex-direction: column;
+
+    .id-form{
+        display: flex;
+        margin-bottom:20px;
+        margin-left:150px;
+        flex-direction: row;
+        .input{
+            border-radius: 5px 0 0 5px;
+        }
+        .btn{
+            border-radius: 0 5px 5px 0;
+        }
+    }
+}
+
+form {
+    .form-group {
+      .form-label {
+        margin-right: 10px;
+      }
+      width: 360px;
+    }
+  
+    height: 90%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    div:nth-child(1) > label {
+      margin-right: 10px;
+    }
+  
+    .group-question {
+      width: 600px;
+      display: flex;
+      flex-direction: column;
+    }
+  
+    @media (max-width: 600px) {
+      body {
+        background-color: olive;
+      }
+    }
+  
+    button {
+      width: 120px;
+    }
+  
+    input {
+      max-width: 260px;
+    }
+  }
+  .back {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #000;
+    text-decoration: underline;
+    font-weight: bold;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .add-more {
+    margin-top: 50px;
+  }
+  .done,
+  .error {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 80px;
+    }
+    span {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    .rotate-in-center {
+      -webkit-animation: rotate-in-center 0.6s
+        cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+      animation: rotate-in-center 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    }
+  
+    .error-btn {
+      margin-top: 50px;
+    }
+  
+    @-webkit-keyframes rotate-in-center {
+      0% {
+        -webkit-transform: rotate(-360deg);
+        transform: rotate(-360deg);
+        opacity: 0;
+      }
+      100% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+        opacity: 1;
+      }
+    }
+    @keyframes rotate-in-center {
+      0% {
+        -webkit-transform: rotate(-360deg);
+        transform: rotate(-360deg);
+        opacity: 0;
+      }
+      100% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+        opacity: 1;
+      }
+    }
+  }
+  

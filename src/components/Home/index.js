@@ -12,6 +12,9 @@ export default function index(props) {
 				<Button onClick={() => props.history.push('/addQuestion')} variant="secondary">
 					Добави Въпрос
 				</Button>
+				<Button onClick={() => props.history.push('/editQuestionById')} variant="dark">
+					Редактирай Въпрос с ID
+				</Button>
 			</div>
 		</div>
 	);

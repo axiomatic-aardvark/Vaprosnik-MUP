@@ -9,10 +9,11 @@ import Questions from "./components/Questions";
 import AddQuestion from "./components/AddQuestion";
 import EditQuestion from "./components/EditQuestion";
 import DeleteQuestion from "./components/DeleteQuestion";
+import EditQuestionById from "./components/EditQuestionById";
 
 import "./App.scss";
 
-function App() {
+const App = () => {
   const options = {
     // you can also just use 'bottom center'
     position: positions.TOP_CENTER,
@@ -32,6 +33,7 @@ function App() {
             <Route path="/addQuestion" exact component={AddQuestion} />
             <Route path="/editQuestion/" exact component={EditQuestion} />
             <Route path="/deleteQuestion/" exact component={DeleteQuestion} />
+            <Route path="/editQuestionById/" exact component={EditQuestionById} />
           </Switch>
         </Router>
       </GlobalState>
