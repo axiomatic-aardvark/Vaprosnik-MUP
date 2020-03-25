@@ -8,7 +8,11 @@ export default (props) => {
 	const [isModalShown, setIsModalShown] = useState(false);
 	const [choice, setChoice] = useState("");
 
-	const handleChosenOption = () => {
+	const [clicked, setClicked] = useState("");
+
+
+	const handleChosenOption = (cause) => {
+		setClicked(cause);
 		setIsModalShown(true)
 	}
 
@@ -21,20 +25,22 @@ export default (props) => {
 	}
 
 	useEffect(() => {
-		if (choice === "bpleven") {
+		if (choice === "bpleven" && clicked === "get-q") {
 			props.history.push("/questions")
+		} else if (choice === "bpleven" && clicked === "add-q") {
+			props.history.push("/addQuestion")
 		}
-	}, [choice, props.history])
+	}, [choice, props, clicked])
 
 	return (
 		<div className="container">
 			<div className="buttons-wrapper">
 				<Button onClick={
-					handleChosenOption
+					() => handleChosenOption("get-q")
 				} variant="primary">
 					Започни Тест
 				</Button>
-				<Button onClick={() => props.history.push('/addQuestion')} variant="secondary">
+				<Button onClick={() => handleChosenOption("add-q")} variant="secondary">
 					Добави Въпрос
 				</Button>
 				<Button onClick={() => props.history.push('/editQuestionById')} variant="dark">

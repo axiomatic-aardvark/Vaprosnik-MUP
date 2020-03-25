@@ -7,7 +7,7 @@ export default ({ show, handleClose, handleChoice }) => {
     return (
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
-                <Modal.Title>Избери вид тест</Modal.Title>
+                <Modal.Title>Избери група</Modal.Title>
             </Modal.Header>
             <Modal.Footer>
                 <Button variant="primary" onClick={() => handleChoice("bpleven")}>
