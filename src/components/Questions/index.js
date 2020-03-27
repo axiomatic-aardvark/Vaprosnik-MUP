@@ -50,6 +50,18 @@ export default props => {
     return shuffle(baseArr);
   };
 
+  const formatChosenGroup = () => {
+    if (group === "bpleven") {
+      return "Биология - МУ Плевен";
+    } else if (group === "hpleven") {
+      return "Химия - МУ Плевен";
+    } else if (group === "bplovdiv") {
+      return "Биология - МУ Пловдив";
+    } else if (group === "hplovdiv") {
+      return "Химия - МУ Пловдив";
+    }
+  };
+
   return (
     <div className="questions-wrapper">
       <span
@@ -60,7 +72,15 @@ export default props => {
       >
         <img className="back-icon" alt="back=-icon" src={backImg}></img>
       </span>
-
+      <span
+        style={{
+          fontSize: 18,
+          marginBottom:20,
+          color: "#800000"
+        }}
+      >
+        {formatChosenGroup()}
+      </span>
       {questions ? (
         <ul className="questions">
           {questions.map((q, i) => {

@@ -1,5 +1,7 @@
 .questions-wrapper {
   min-width: 800px;
+  flex-direction: column;
+  
 }
 
 div {
@@ -95,7 +97,7 @@ div {
       .input-group {
         input {
           margin-top: 2.5px;
-          margin-right:7.5px;
+          margin-right: 7.5px;
         }
 
         margin-bottom: 0 !important;
