@@ -74,11 +74,10 @@ export default props => {
                   aria-label="Checkbox for following text input"
                 />
               </InputGroup.Prepend>
-              <FormControl
-                aria-label="Text input with checkbox"
-                value={`А)  ${props.option1.split("@")[0]}`}
-                disabled={true}
-              />
+
+              <span className="answer">{` А) ${
+                props.option1.split("@")[0]
+              }`}</span>
             </InputGroup>
             <InputGroup className="mb-3">
               <InputGroup.Prepend>
@@ -89,11 +88,10 @@ export default props => {
                   aria-label="Checkbox for following text input"
                 />
               </InputGroup.Prepend>
-              <FormControl
-                aria-label="Text input with checkbox"
-                value={`Б)  ${props.option2.split("@")[0]}`}
-                disabled={true}
-              />
+
+              <span className="answer">{` Б) ${
+                props.option2.split("@")[0]
+              }`}</span>
             </InputGroup>
             <InputGroup className="mb-3">
               <InputGroup.Prepend>
@@ -104,11 +102,10 @@ export default props => {
                   aria-label="Checkbox for following text input"
                 />
               </InputGroup.Prepend>
-              <FormControl
-                aria-label="Text input with checkbox"
-                value={`В)  ${props.option3.split("@")[0]}`}
-                disabled={true}
-              />
+
+              <span className="answer">{` В) ${
+                props.option3.split("@")[0]
+              }`}</span>
             </InputGroup>
             <InputGroup className="mb-3">
               <InputGroup.Prepend>
@@ -119,11 +116,9 @@ export default props => {
                   aria-label="Checkbox for following text input"
                 />
               </InputGroup.Prepend>
-              <FormControl
-                aria-label="Text input with checkbox"
-                value={`Г)  ${props.option4.split("@")[0]}`}
-                disabled={true}
-              />
+              <span className="answer">{` Г) ${
+                props.option2.split("@")[0]
+              }`}</span>
             </InputGroup>
             <span className="foot-note">- {props.num + 1} -</span>
           </Fragment>

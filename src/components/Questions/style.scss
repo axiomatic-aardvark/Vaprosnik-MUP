@@ -93,7 +93,17 @@ div {
       }
 
       .input-group {
+        input {
+          margin-top: 2.5px;
+          margin-right:7.5px;
+        }
+
         margin-bottom: 0 !important;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
       }
 
       .input-group-text {
@@ -132,8 +142,21 @@ div {
   }
 }
 
-@media screen and (max-width: 550px) {
-  .questions {
-    margin-left: 190px;
+.answer {
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: #800000;
+  font-weight: normal;
+  text-align: left;
+}
+
+@media (max-width: 550px) {
+  .questions-wrapper {
+    min-width: 0;
+    .card {
+      width: 350px !important;
+      margin-left: 0 !important;
+    }
   }
 }
