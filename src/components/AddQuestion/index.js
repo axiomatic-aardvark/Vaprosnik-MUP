@@ -104,6 +104,18 @@ export default props => {
     }
   };
 
+  const formatChosenGroup = () => {
+    if (group === "bpleven") {
+      return "Биология - МУ Плевен";
+    } else if (group === "hpleven") {
+      return "Химия - МУ Плевен";
+    } else if (group === "bplovdiv") {
+      return "Биология - МУ Пловдив";
+    } else if (group === "hplovdiv") {
+      return "Химия - МУ Пловдив";
+    }
+  };
+
   return (
     <div className="add-question" onKeyDown={e => pressedKeyOnDone(e)}>
       <span
@@ -116,6 +128,7 @@ export default props => {
       </span>
       {!isQuerySent ? (
         <Form onSubmit={e => onFormSubmit(e)}>
+          <span>{formatChosenGroup()}</span>
           <Form.Group className="group-question" controlId="questions">
             <Form.Label>Въпрос:</Form.Label>
             <Form.Control
