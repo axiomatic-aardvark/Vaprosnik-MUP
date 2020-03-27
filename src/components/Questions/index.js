@@ -12,9 +12,9 @@ export default props => {
   let { questions } = globalContext;
 
   if (group === "bpleven") {
-    questions = questions.filter(q => !q.group || q.group === "");
+    questions = questions.filter(q => !q.group || q.group === "").slice(0, 15);
   } else {
-    questions = questions.filter(q => q.group === group);
+    questions = questions.filter(q => q.group === group).slice(0, 15);
   }
 
   const [isSubmitted, setIsSubmitted] = useState(false);
