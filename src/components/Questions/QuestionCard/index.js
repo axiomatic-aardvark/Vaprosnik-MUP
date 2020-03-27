@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from "react";
-import { InputGroup, FormControl } from "react-bootstrap";
+import { InputGroup } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 
 import editImg from "../../../images/edit.png";
@@ -7,7 +7,7 @@ import deleteImg from "../../../images/delete.png";
 
 export default props => {
   const [selectedOption, setSelectedOption] = useState("");
-  const { getResults, isSubmitted } = props;
+  const { getResults, isSubmitted, group } = props;
 
   const onToggle = newValue => {
     if (selectedOption !== newValue) {
@@ -42,7 +42,8 @@ export default props => {
               text: props.text,
               option2: props.option2,
               option3: props.option3,
-              option4: props.option4
+              option4: props.option4,
+              group: group
             });
           }}
         >
@@ -57,7 +58,8 @@ export default props => {
               text: props.text,
               option2: props.option2,
               option3: props.option3,
-              option4: props.option4
+              option4: props.option4,
+              group: group
             });
           }}
         >

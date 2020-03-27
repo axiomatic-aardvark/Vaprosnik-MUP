@@ -10,6 +10,8 @@ import backImg from "../../images/back.png";
 import "./style.scss";
 
 export default props => {
+  const group = props.location.state.group;
+
   const [option1, setOption1] = useState("");
   const [option2, setOption2] = useState("");
   const [option3, setOption3] = useState("");
@@ -52,7 +54,8 @@ export default props => {
         option2: option2 + ",f",
         option3: option3 + ",f",
         option4: option4 + ",f",
-        text: text
+        text: text,
+        group: group
       })
       .then(function(response) {
         console.log(response);

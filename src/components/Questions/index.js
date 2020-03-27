@@ -6,8 +6,16 @@ import QuestionCard from "./QuestionCard";
 import "./style.scss";
 
 export default props => {
+  const group = props.location.state.group;
+
   const globalContext = useContext(GlobalContext);
-  const { questions } = globalContext;
+  let { questions } = globalContext;
+
+  if (group === "bpleven") {
+    questions = questions.filter(q => !q.group || q.group === "");
+  } else {
+    questions = questions.filter(q => q.group === group);
+  }
 
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -77,6 +85,7 @@ export default props => {
                 history={props.history}
                 className="question-card"
                 getResults={getResults}
+                group={group}
               />
             );
           })}

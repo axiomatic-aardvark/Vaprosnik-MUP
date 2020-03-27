@@ -7,6 +7,7 @@ import "./style.scss";
 
 export default props => {
   const state = props.location.state;
+  console.log("S ", state);
   const alert = useAlert();
 
   const [option1, setOption1] = useState("");
@@ -65,7 +66,7 @@ export default props => {
         setOption3("");
         setOption4("");
         setText("");
-        props.history.push("/questions");
+        props.history.push("/questions", { group: props.location.state.group });
       })
       .catch(function(error) {
         alert.error("ERROR");
@@ -78,7 +79,9 @@ export default props => {
       <span
         className="back"
         onClick={() => {
-          props.history.push("/questions");
+          props.history.push("/questions", {
+            group: props.location.state.group
+          });
         }}
       >
         Назад

@@ -69,7 +69,8 @@ export default props => {
           option4: option4.endsWith("f")
             ? option4.substring(0, option4.length - 2) + ",f"
             : option4 + ",f",
-          text: text
+          text: text,
+          group: props.location.state.group
         }
       )
       .then(function(response) {
@@ -81,7 +82,7 @@ export default props => {
         setOption3("");
         setOption4("");
         setText("");
-        props.history.push("/questions");
+        props.history.push("/questions", { group: props.location.state.group });
       })
       .catch(function(error) {
         alert.error("ERROR");

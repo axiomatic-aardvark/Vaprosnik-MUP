@@ -57,7 +57,7 @@ export const questionsUpdate = async () => {
 
   const getLimitedQuestions = arr => {
     let scrambledQuestions = shuffle(arr);
-    scrambledQuestions = scrambledQuestions.slice(0, 15);
+    // scrambledQuestions = scrambledQuestions.slice(0, 15);
 
     console.log("BASE ", scrambledQuestions);
 
