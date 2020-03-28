@@ -95,7 +95,9 @@ export default props => {
       <span
         className="back"
         onClick={() => {
-          props.history.push("/questions");
+          props.history.push("/questions", {
+            group: props.location.state.group
+          });
         }}
       >
         <img className="back-icon" alt="back=-icon" src={backImg}></img>
