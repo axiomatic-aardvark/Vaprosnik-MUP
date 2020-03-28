@@ -119,7 +119,7 @@ export default props => {
                 />
               </InputGroup.Prepend>
               <span className="answer">{` Г) ${
-                props.option2.split("@")[0]
+                props.option4.split("@")[0]
               }`}</span>
             </InputGroup>
             <span className="foot-note">- {props.num + 1} -</span>
