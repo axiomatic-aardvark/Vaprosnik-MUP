@@ -60,6 +60,9 @@ export default props => {
         >
           Редактирай Въпрос с ID
         </Button>
+        <Button onClick={() => props.history.push("/log")} variant="warning">
+          Последно добавен въпрос
+        </Button>
       </div>
       <Modal
         show={isModalShown}

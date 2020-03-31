@@ -10,6 +10,7 @@ import AddQuestion from "./components/AddQuestion";
 import EditQuestion from "./components/EditQuestion";
 import DeleteQuestion from "./components/DeleteQuestion";
 import EditQuestionById from "./components/EditQuestionById";
+import Log from "./components/Log";
 
 import "./App.scss";
 
@@ -33,12 +34,17 @@ const App = () => {
             <Route path="/addQuestion" exact component={AddQuestion} />
             <Route path="/editQuestion/" exact component={EditQuestion} />
             <Route path="/deleteQuestion/" exact component={DeleteQuestion} />
-            <Route path="/editQuestionById/" exact component={EditQuestionById} />
+            <Route
+              path="/editQuestionById/"
+              exact
+              component={EditQuestionById}
+            />
+            <Route path="/log" exact component={Log}></Route>
           </Switch>
         </Router>
       </GlobalState>
     </AlertProvider>
   );
-}
+};
 
 export default App;

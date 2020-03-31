@@ -1,0 +1,139 @@
+.log-container {
+  display: flex;
+  flex-direction: column;
+  .log-question-container {
+    border-radius: 50px;
+    background: #ffe4c4;
+    box-shadow: 20px 20px 60px #d9c2a7, -20px -20px 60px #ffffe1;
+    margin-bottom: 30px;
+    padding: 30px 20px;
+    width: 350px;
+    .header {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+      width: 100%;
+      span {
+        font-size: 10px;
+        font-weight: bold;
+        color: #800000;
+        margin-top: -20px;
+      }
+    }
+  }
+}
+
+.card {
+  border: none;
+  position: relative;
+  z-index: 10;
+  align-items: flex-start;
+
+  border-radius: 50px;
+  background: #ffe4c4;
+  box-shadow: 20px 20px 60px #d9c2a7, -20px -20px 60px #ffffe1;
+
+  .foot-note {
+    color: #800000;
+    width: 100%;
+    margin-bottom: -15px;
+    margin-top: 5px;
+    font-size: 12px;
+    font-weight: normal;
+  }
+
+  .edit {
+    position: absolute;
+    left: 25px;
+    top: 8px;
+
+    text-decoration: underline;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .delete {
+    position: absolute;
+
+    right: 25px;
+    top: 8px;
+
+    text-decoration: underline;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .title {
+    font-size: 15px;
+    margin-bottom: 5px;
+    color: #800000;
+
+    text-align: left;
+    white-space: pre-line;
+  }
+
+  padding: 0 2rem;
+  height: auto;
+  width: 600px;
+  background-color: bisque;
+  margin-bottom: 25px;
+  margin-left: 20px;
+  padding-top: 40px;
+  padding-bottom: 35px;
+
+  .form-control {
+    background: none;
+    border: none;
+    // max-width: 290px;
+    font-size: 14px;
+    color: #800000;
+  }
+
+  .input-group {
+    input {
+      margin-top: 2.5px;
+      margin-right: 7.5px;
+    }
+
+    margin-bottom: 0 !important;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+  }
+
+  .input-group-text {
+    padding: 0;
+    background: none;
+    border: none;
+    margin-left: 20px;
+  }
+
+  .red {
+    color: red;
+    font-size: 15px;
+  }
+
+  .green {
+    color: green;
+    max-width: 300px;
+    font-size: 15px;
+  }
+
+  .res-msg {
+    margin-top: 20px;
+    max-width: 300px;
+    font-size: 15px;
+  }
+
+  .edit-icon,
+  .delete-icon {
+    width: 15px;
+  }
+}
+
+.group-name {
+  margin-bottom: 30px;
+  color: #800000;
+}

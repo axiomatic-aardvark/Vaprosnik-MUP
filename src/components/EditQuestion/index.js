@@ -10,6 +10,8 @@ export default props => {
   const state = props.location.state;
   const alert = useAlert();
 
+  console.log(state);
+
   const [option1, setOption1] = useState("");
   const [option2, setOption2] = useState("");
   const [option3, setOption3] = useState("");
@@ -82,7 +84,15 @@ export default props => {
         setOption3("");
         setOption4("");
         setText("");
-        props.history.push("/questions", { group: props.location.state.group });
+        if (props.location.state.isComingFromLog) {
+          props.history.push("/log", {
+            group: props.location.state.group
+          });
+        } else {
+          props.history.push("/questions", {
+            group: props.location.state.group
+          });
+        }
       })
       .catch(function(error) {
         alert.error("ERROR");
@@ -95,9 +105,15 @@ export default props => {
       <span
         className="back"
         onClick={() => {
-          props.history.push("/questions", {
-            group: props.location.state.group
-          });
+          if (props.location.state.isComingFromLog) {
+            props.history.push("/log", {
+              group: props.location.state.group
+            });
+          } else {
+            props.history.push("/questions", {
+              group: props.location.state.group
+            });
+          }
         }}
       >
         <img className="back-icon" alt="back=-icon" src={backImg}></img>

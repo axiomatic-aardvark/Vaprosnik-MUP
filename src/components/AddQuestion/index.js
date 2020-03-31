@@ -25,8 +25,6 @@ export default props => {
 
   const [isEditing, setEditing] = useState(true);
 
-  // const proxyUrl = "https://cors-anywhere.herokuapp.com/";
-
   const alert = useAlert();
 
   const onFormSubmit = e => {

@@ -66,7 +66,7 @@ export default props => {
         setOption3("");
         setOption4("");
         setText("");
-        props.history.push("/questions", { group: props.location.state.group });
+        props.history.push("/");
       })
       .catch(function(error) {
         alert.error("ERROR");
@@ -79,9 +79,15 @@ export default props => {
       <span
         className="back"
         onClick={() => {
-          props.history.push("/questions", {
-            group: props.location.state.group
-          });
+          if (props.location.state.isComingFromLog) {
+            props.history.push("/log", {
+              group: props.location.state.group
+            });
+          } else {
+            props.history.push("/questions", {
+              group: props.location.state.group
+            });
+          }
         }}
       >
         Назад

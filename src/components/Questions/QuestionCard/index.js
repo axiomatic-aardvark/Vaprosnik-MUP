@@ -7,7 +7,7 @@ import deleteImg from "../../../images/delete.png";
 
 export default props => {
   const [selectedOption, setSelectedOption] = useState("");
-  const { getResults, isSubmitted, group } = props;
+  const { getResults, isSubmitted, group, isComingFromLog } = props;
 
   const onToggle = newValue => {
     if (selectedOption !== newValue) {
@@ -43,7 +43,8 @@ export default props => {
               option2: props.option2,
               option3: props.option3,
               option4: props.option4,
-              group: group
+              group: group,
+              isComingFromLog: isComingFromLog
             });
           }}
         >
@@ -59,7 +60,8 @@ export default props => {
               option2: props.option2,
               option3: props.option3,
               option4: props.option4,
-              group: group
+              group: group,
+              isComingFromLog: isComingFromLog
             });
           }}
         >

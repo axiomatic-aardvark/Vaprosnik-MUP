@@ -2,26 +2,6 @@ import { UPDATE_QUESTIONS } from "./types";
 import axios from "axios";
 
 export const questionsUpdate = async () => {
-  function shuffle(array) {
-    var currentIndex = array.length,
-      temporaryValue,
-      randomIndex;
-
-    // While there remain elements to shuffle...
-    while (0 !== currentIndex) {
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-
-      // And swap it with the current element.
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
-    }
-
-    return array;
-  }
-
   const affixWithAtSign = arr => {
     return arr.map(element => {
       const { option1, option2, option3, option4 } = element;
@@ -56,14 +36,12 @@ export const questionsUpdate = async () => {
   };
 
   const getLimitedQuestions = arr => {
-    let scrambledQuestions = shuffle(arr);
-    console.log("BASE ", scrambledQuestions);
+    console.log("BASE ", arr);
 
-    return affixWithAtSign(scrambledQuestions);
+    return affixWithAtSign(arr);
   };
 
   try {
-    // const proxyUrl = "https://cors-anywhere.herokuapp.com/";
     const res = await axios.get(
       "https://server-vaprosnik.herokuapp.com/questions"
     );
