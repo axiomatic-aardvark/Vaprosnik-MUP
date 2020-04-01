@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import GlobalContext from "../GlobalState/globalContext";
 import Loader from "react-loader-spinner";
 import backImg from "../../images/back.png";
@@ -10,7 +10,7 @@ export default props => {
   const group = props.location.state.group;
 
   const globalContext = useContext(GlobalContext);
-  let { questions } = globalContext;
+  let { questions, onQuestionsToShowUpdate, questionsToShow } = globalContext;
 
   const shuffle = array => {
     let newArr = [...array];
@@ -46,6 +46,12 @@ export default props => {
       .slice(0, 15);
   }
 
+  useEffect(() => {
+    if (questionsToShow.length === 0) {
+      onQuestionsToShowUpdate(shuffledQuestions);
+    }
+  }, [questions]);
+
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const getResults = e => {
@@ -80,7 +86,7 @@ export default props => {
       </span>
       {shuffledQuestions ? (
         <ul className="questions">
-          {shuffledQuestions.map((q, i) => {
+          {questionsToShow.map((q, i) => {
             let scrambledArr = genScrambledArr(
               q.option1,
               q.option2,

@@ -1,5 +1,13 @@
-import { UPDATE_QUESTIONS } from "./types";
+import { UPDATE_QUESTIONS, UPDATE_QUESTIONS_TO_SHOW } from "./types";
 import axios from "axios";
+
+export const questionsToShowUpdate = questions => {
+  console.log("TUK ", questions);
+  return {
+    type: UPDATE_QUESTIONS_TO_SHOW,
+    payload: questions
+  };
+};
 
 export const questionsUpdate = async () => {
   const affixWithAtSign = arr => {

@@ -2,16 +2,18 @@ import React, { useReducer, useEffect } from "react";
 import PropTypes from "prop-types";
 import SwapContext from "./globalContext";
 import GlobalReducer from "./globalReducer";
-import { questionsUpdate } from "./actions";
+import { questionsUpdate, questionsToShowUpdate } from "./actions";
 
 const GlobalState = props => {
   const initialState = {
-    questions: []
+    questions: [],
+    questionsToShow: []
   };
 
   const [state, dispatch] = useReducer(GlobalReducer, initialState);
 
   const onQuestionsUpdate = async () => dispatch(await questionsUpdate());
+  const onQuestionsToShowUpdate = (questions) => dispatch(questionsToShowUpdate(questions));
 
   useEffect(() => {
     onQuestionsUpdate();
@@ -21,9 +23,11 @@ const GlobalState = props => {
     <SwapContext.Provider
       value={{
         questions: state.questions,
+        questionsToShow: state.questionsToShow,
 
         // actions
-        onQuestionsUpdate
+        onQuestionsUpdate,
+        onQuestionsToShowUpdate
       }}
     >
       {props.children}
