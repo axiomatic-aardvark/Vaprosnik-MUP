@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState } from "react";
 import { InputGroup } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 
@@ -68,7 +68,7 @@ export default props => {
           <img src={deleteImg} alt="bin-icon" className="delete-icon"></img>
         </span>
         {!props.isSubmitted ? (
-          <Fragment>
+          <>
             <InputGroup className="mb-3">
               <InputGroup.Prepend>
                 <InputGroup.Checkbox
@@ -125,23 +125,23 @@ export default props => {
               }`}</span>
             </InputGroup>
             <span className="foot-note">- {props.num + 1} -</span>
-          </Fragment>
+          </>
         ) : selectedOption.split("@")[1] === "t" ? (
-          <Fragment>
+          <>
             <span className="res-msg green">Верен отговор!</span>
             <span className="green">{`Ти отговори: "${
               selectedOption.split("@")[0]
             }"`}</span>
-          </Fragment>
+          </>
         ) : (
-          <Fragment>
+          <>
             <span className="res-msg red">Грешен отговор!</span>
             <span className="red">{`Ти отговори: ${
               selectedOption
                 ? quote + selectedOption.split("@")[0] + quote
                 : '"Не давам отговор"'
             }, а верният отг. е: "${getRightAnswer()}"`}</span>
-          </Fragment>
+          </>
         )}
       </div>
       {props.num === 14 ? (
