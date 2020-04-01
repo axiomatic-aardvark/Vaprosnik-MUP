@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import GlobalContext from "../GlobalState/globalContext";
 import Loader from "react-loader-spinner";
 import backImg from "../../images/back.png";
+import reloadImg from "../../images/refresh.png";
 import QuestionCard from "./QuestionCard";
 import { formatChosenGroup } from "../../utils";
 import "./style.scss";
@@ -74,6 +75,14 @@ export default props => {
         }}
       >
         <img className="back-icon" alt="back=-icon" src={backImg}></img>
+      </span>
+      <span
+        className="reload"
+        onClick={() => {
+          window.location.reload();
+        }}
+      >
+        <img className="reload-icon" alt="reload-icon" src={reloadImg}></img>
       </span>
       <span
         style={{

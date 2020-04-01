@@ -3,6 +3,7 @@ import axios from "axios";
 import { Form, Button } from "react-bootstrap";
 import { useAlert } from "react-alert";
 import backImg from "../../images/back.png";
+import reloadImg from "../../images/refresh.png";
 
 import "./style.scss";
 
@@ -117,6 +118,14 @@ export default props => {
         }}
       >
         <img className="back-icon" alt="back=-icon" src={backImg}></img>
+      </span>
+      <span
+        className="reload"
+        onClick={() => {
+          window.location.reload();
+        }}
+      >
+        <img className="reload-icon" alt="reload-icon" src={reloadImg}></img>
       </span>
       <Form onSubmit={e => onSubmitEdit(e)}>
         <Form.Group className="group-question" controlId="questions">

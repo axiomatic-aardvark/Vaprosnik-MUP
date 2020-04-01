@@ -10,6 +10,19 @@ body {
   background-color: #fcfcfc;
 }
 
-.back-icon {
+.back-icon,
+.reload-icon {
   width: 20px;
+}
+
+.reload {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #000;
+  text-decoration: underline;
+  font-weight: bold;
+  &:hover {
+    cursor: pointer;
+  }
 }

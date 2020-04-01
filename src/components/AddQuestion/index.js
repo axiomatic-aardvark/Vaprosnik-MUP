@@ -7,6 +7,8 @@ import Loader from "react-loader-spinner";
 import { useAlert } from "react-alert";
 
 import backImg from "../../images/back.png";
+import reloadImg from "../../images/refresh.png";
+
 import "./style.scss";
 
 export default props => {
@@ -122,7 +124,15 @@ export default props => {
           props.history.push("/");
         }}
       >
-        <img className="back-icon" alt="back=-icon" src={backImg}></img>
+        <img className="back-icon" alt="back-icon" src={backImg}></img>
+      </span>
+      <span
+        className="reload"
+        onClick={() => {
+          window.location.reload();
+        }}
+      >
+        <img className="reload-icon" alt="reload-icon" src={reloadImg}></img>
       </span>
       {!isQuerySent ? (
         <Form onSubmit={e => onFormSubmit(e)}>
