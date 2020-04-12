@@ -8,7 +8,33 @@ import deleteImg from "../../../images/delete.png";
 import "./style.scss";
 
 export default (props) => {
-  const QUESTIONS_TO_SHOW = 5;
+  const QUESTIONS_TO_SHOW = 15;
+
+  const gradeTable = {
+    "1": "Слаб 2, ее пупас защо така :(",
+    "2": "Слаб 2, ее пупас защо така :(",
+    "3": "Слаб 2, ее пупас защо така :(",
+    "4": "Слаб 2, ее пупас защо така :(",
+    "5": "Слаб 2, ее пупас защо така :(",
+    "6": "Слаб 2, ее пупас защо така :(",
+    "7": "Слаб 2, ее пупас защо така :(",
+    "8": "Среден 3, ее пупас защо така :(",
+    "9": "Добър 3.5, другият път ще е повече пупи :)",
+    "10": "Добър 4, другият път ще е повече пупи :)",
+    "11": "Много добър 4.50, другият път ще е повече пупи :)",
+    "12": "Много добър 5.00, още мъничко пупи :)",
+    "13": "Отличен 5.50, още мъничко пупи :)",
+    "14": "Отличен 5.75, още мъничко пупи :)",
+    "15": "Отличен 6, право пупас!!! <3",
+  };
+
+  // const mockTable = {
+  //   "1": 2,
+  //   "2": 3,
+  //   "3": 4,
+  //   "4": 5,
+  //   "5": 6,
+  // };
 
   const [selectedOption, setSelectedOption] = useState("");
   const {
@@ -23,7 +49,6 @@ export default (props) => {
   const onToggle = (newValue) => {
     if (selectedOption !== newValue) {
       setSelectedOption(newValue);
-      console.log(newValue.split("@")[1]);
 
       answers.current[id] = newValue.split("@")[1];
     }
@@ -37,7 +62,7 @@ export default (props) => {
     const wrongAnswersCount = QUESTIONS_TO_SHOW - rightAnswersCount;
 
     return (
-      <span>{`Резултат: ${rightAnswersCount} верни, ${wrongAnswersCount} грешни. Оценка: ${6}`}</span>
+      <span>{`Резултат: ${rightAnswersCount} верни, ${wrongAnswersCount} грешни. Оценка: ${gradeTable[rightAnswersCount]}`}</span>
     );
   };
 
