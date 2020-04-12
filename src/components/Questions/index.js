@@ -9,7 +9,7 @@ import { formatChosenGroup } from "../../utils";
 import "./style.scss";
 
 export default (props) => {
-  const answers = useRef([]);
+  const answers = useRef({});
 
   const group = props.location.state.group;
 

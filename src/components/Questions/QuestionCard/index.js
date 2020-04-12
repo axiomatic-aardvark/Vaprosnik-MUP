@@ -25,8 +25,20 @@ export default (props) => {
       setSelectedOption(newValue);
       console.log(newValue.split("@")[1]);
 
-      answers.current.push({ [id]: newValue.split("@")[1] });
+      answers.current[id] = newValue.split("@")[1];
     }
+  };
+
+  const showRes = () => {
+    const rightAnswersCount = Object.values(answers.current).filter(
+      (a) => a === "t"
+    ).length;
+
+    const wrongAnswersCount = QUESTIONS_TO_SHOW - rightAnswersCount;
+
+    return (
+      <span>{`Резултат: ${rightAnswersCount} верни, ${wrongAnswersCount} грешни. Оценка: ${6}`}</span>
+    );
   };
 
   const quote = '"';
@@ -160,8 +172,7 @@ export default (props) => {
       </div>
       {props.num === QUESTIONS_TO_SHOW - 1 ? (
         <div className="bottom-container">
-          {console.log(answers.current)}
-          <span>nasko</span>
+          {isSubmitted ? showRes() : null}
           <Button
             className="submit-btn"
             onClick={(e) => {
