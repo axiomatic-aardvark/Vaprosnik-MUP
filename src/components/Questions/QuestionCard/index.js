@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { InputGroup } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 
@@ -11,11 +11,21 @@ export default (props) => {
   const QUESTIONS_TO_SHOW = 5;
 
   const [selectedOption, setSelectedOption] = useState("");
-  const { getResults, isSubmitted, group, isComingFromLog } = props;
+  const {
+    getResults,
+    isSubmitted,
+    group,
+    isComingFromLog,
+    answers,
+    id,
+  } = props;
 
   const onToggle = (newValue) => {
     if (selectedOption !== newValue) {
       setSelectedOption(newValue);
+      console.log(newValue.split("@")[1]);
+
+      answers.current.push({ [id]: newValue.split("@")[1] });
     }
   };
 
@@ -150,6 +160,7 @@ export default (props) => {
       </div>
       {props.num === QUESTIONS_TO_SHOW - 1 ? (
         <div className="bottom-container">
+          {console.log(answers.current)}
           <span>nasko</span>
           <Button
             className="submit-btn"

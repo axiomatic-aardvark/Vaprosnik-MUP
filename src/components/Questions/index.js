@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
 import GlobalContext from "../GlobalState/globalContext";
 import Loader from "react-loader-spinner";
 import backImg from "../../images/back.png";
@@ -9,6 +9,8 @@ import { formatChosenGroup } from "../../utils";
 import "./style.scss";
 
 export default (props) => {
+  const answers = useRef([]);
+
   const group = props.location.state.group;
 
   const globalContext = useContext(GlobalContext);
@@ -119,6 +121,7 @@ export default (props) => {
                 className="question-card"
                 getResults={getResults}
                 group={group}
+                answers={answers}
               />
             );
           })}
