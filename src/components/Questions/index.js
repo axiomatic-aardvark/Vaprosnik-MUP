@@ -5,15 +5,16 @@ import backImg from "../../images/back.png";
 import reloadImg from "../../images/refresh.png";
 import QuestionCard from "./QuestionCard";
 import { formatChosenGroup } from "../../utils";
+
 import "./style.scss";
 
-export default props => {
+export default (props) => {
   const group = props.location.state.group;
 
   const globalContext = useContext(GlobalContext);
   let { questions, onQuestionsToShowUpdate, questionsToShow } = globalContext;
 
-  const shuffle = array => {
+  const shuffle = (array) => {
     let newArr = [...array];
 
     var currentIndex = newArr.length,
@@ -39,11 +40,11 @@ export default props => {
 
   if (group === "bpleven") {
     shuffledQuestions = shuffledQuestions
-      .filter(q => !q.group || q.group === "")
+      .filter((q) => !q.group || q.group === "")
       .slice(0, 15);
   } else {
     shuffledQuestions = shuffledQuestions
-      .filter(q => q.group === group)
+      .filter((q) => q.group === group)
       .slice(0, 15);
   }
 
@@ -55,7 +56,7 @@ export default props => {
 
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const getResults = e => {
+  const getResults = (e) => {
     e.preventDefault();
     setIsSubmitted(true);
   };
@@ -88,7 +89,7 @@ export default props => {
         style={{
           fontSize: 18,
           marginBottom: 20,
-          color: "#800000"
+          color: "#800000",
         }}
       >
         {formatChosenGroup(group)}

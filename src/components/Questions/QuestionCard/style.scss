@@ -1,0 +1,9 @@
+.bottom-container {
+  display: flex;
+  flex-direction: column;
+  span {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: #800000;
+  }
+}

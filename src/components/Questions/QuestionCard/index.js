@@ -1,15 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { InputGroup } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 
 import editImg from "../../../images/edit.png";
 import deleteImg from "../../../images/delete.png";
 
-export default props => {
+import "./style.scss";
+
+export default (props) => {
+  const QUESTIONS_TO_SHOW = 5;
+
   const [selectedOption, setSelectedOption] = useState("");
   const { getResults, isSubmitted, group, isComingFromLog } = props;
 
-  const onToggle = newValue => {
+  const onToggle = (newValue) => {
     if (selectedOption !== newValue) {
       setSelectedOption(newValue);
     }
@@ -44,7 +48,7 @@ export default props => {
               option3: props.option3,
               option4: props.option4,
               group: group,
-              isComingFromLog: isComingFromLog
+              isComingFromLog: isComingFromLog,
             });
           }}
         >
@@ -61,7 +65,7 @@ export default props => {
               option3: props.option3,
               option4: props.option4,
               group: group,
-              isComingFromLog: isComingFromLog
+              isComingFromLog: isComingFromLog,
             });
           }}
         >
@@ -144,16 +148,19 @@ export default props => {
           </>
         )}
       </div>
-      {props.num === 14 ? (
-        <Button
-          className="submit-btn"
-          onClick={e => {
-            isSubmitted ? window.location.reload() : getResults(e);
-          }}
-          variant={isSubmitted ? "success" : "primary"}
-        >
-          {isSubmitted ? "Зареди нови въпроси" : "Край"}
-        </Button>
+      {props.num === QUESTIONS_TO_SHOW - 1 ? (
+        <div className="bottom-container">
+          <span>nasko</span>
+          <Button
+            className="submit-btn"
+            onClick={(e) => {
+              isSubmitted ? window.location.reload() : getResults(e);
+            }}
+            variant={isSubmitted ? "success" : "primary"}
+          >
+            {isSubmitted ? "Зареди нови въпроси" : "Край"}
+          </Button>
+        </div>
       ) : null}
     </>
   );
