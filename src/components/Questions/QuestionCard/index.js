@@ -8,7 +8,7 @@ import deleteImg from "../../../images/delete.png";
 import "./style.scss";
 
 export default (props) => {
-  const QUESTIONS_TO_SHOW = 5;
+  const QUESTIONS_TO_SHOW = 15;
 
   const gradeTable = {
     "1": "Слаб 2, ее пупас защо така :(",
