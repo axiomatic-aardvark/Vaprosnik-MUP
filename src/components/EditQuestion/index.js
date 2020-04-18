@@ -11,7 +11,6 @@ export default props => {
   const state = props.location.state;
   const alert = useAlert();
 
-  console.log(state);
 
   const [option1, setOption1] = useState("");
   const [option2, setOption2] = useState("");
@@ -28,7 +27,6 @@ export default props => {
       return a.endsWith("f");
     });
 
-    console.log(allA);
 
     setOption1(rightA[0]);
     setOption2(wrongAs[0]);

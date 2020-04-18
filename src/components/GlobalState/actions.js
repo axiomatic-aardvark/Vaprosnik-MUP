@@ -1,17 +1,17 @@
 import { UPDATE_QUESTIONS, UPDATE_QUESTIONS_TO_SHOW } from "./types";
 import axios from "axios";
 
-export const questionsToShowUpdate = questions => {
+export const questionsToShowUpdate = (questions) => {
   console.log("TUK ", questions);
   return {
     type: UPDATE_QUESTIONS_TO_SHOW,
-    payload: questions
+    payload: questions,
   };
 };
 
 export const questionsUpdate = async () => {
-  const affixWithAtSign = arr => {
-    return arr.map(element => {
+  const affixWithAtSign = (arr) => {
+    return arr.map((element) => {
       const { option1, option2, option3, option4 } = element;
 
       const index1 = option1.lastIndexOf(",");
@@ -43,7 +43,7 @@ export const questionsUpdate = async () => {
     });
   };
 
-  const getLimitedQuestions = arr => {
+  const getLimitedQuestions = (arr) => {
     console.log("BASE ", arr);
 
     return affixWithAtSign(arr);
@@ -53,16 +53,15 @@ export const questionsUpdate = async () => {
     const res = await axios.get(
       "https://server-vaprosnik.herokuapp.com/questions"
     );
-    console.log(res.data);
 
     return {
       type: UPDATE_QUESTIONS,
-      payload: getLimitedQuestions(res.data)
+      payload: getLimitedQuestions(res.data),
     };
   } catch (error) {
     return {
       type: UPDATE_QUESTIONS,
-      payload: { questions: null }
+      payload: { questions: null },
     };
   }
 };

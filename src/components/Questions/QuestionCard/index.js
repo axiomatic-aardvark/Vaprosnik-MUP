@@ -44,7 +44,6 @@ export default (props) => {
   const [isDChecked, setIsDChecked] = useState(false);
 
   const onToggle = (newValue, optionLabel) => {
-    console.log(newValue);
     if (selectedOption !== newValue) {
       setSelectedOption(newValue);
 

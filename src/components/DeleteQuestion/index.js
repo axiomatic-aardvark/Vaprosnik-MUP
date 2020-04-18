@@ -7,7 +7,6 @@ import "./style.scss";
 
 export default props => {
   const state = props.location.state;
-  console.log("S ", state);
   const alert = useAlert();
 
   const [option1, setOption1] = useState("");
@@ -25,7 +24,6 @@ export default props => {
       return a.endsWith("f");
     });
 
-    console.log(allA);
 
     setOption1(rightA[0]);
     setOption2(wrongAs[0]);

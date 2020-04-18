@@ -7,7 +7,7 @@ import reloadImg from "../../images/refresh.png";
 
 import "./style.scss";
 
-export default props => {
+export default (props) => {
   const alert = useAlert();
   const [givenId, setGivenId] = useState("");
   const [questionObject, setQuestionObject] = useState();
@@ -23,17 +23,15 @@ export default props => {
     option2,
     option3,
     option4,
-    text
+    text,
   }) => {
     const allA = [option1, option2, option3, option4];
-    const rightA = allA.filter(a => {
+    const rightA = allA.filter((a) => {
       return a.endsWith("t");
     });
-    const wrongAs = allA.filter(a => {
+    const wrongAs = allA.filter((a) => {
       return a.endsWith("f");
     });
-
-    console.log(allA);
 
     setOption1(rightA[0].substring(0, rightA[0].length - 2) + "@t");
     setOption2(wrongAs[0].substring(0, wrongAs[0].length - 2) + "@f");
@@ -43,7 +41,7 @@ export default props => {
     setText(text);
   };
 
-  const onSubmitEdit = e => {
+  const onSubmitEdit = (e) => {
     e.preventDefault();
 
     if (
@@ -75,10 +73,10 @@ export default props => {
           option4: option4.endsWith("f")
             ? option4.substring(0, option4.length - 2) + ",f"
             : option4 + ",f",
-          text: text
+          text: text,
         }
       )
-      .then(function(response) {
+      .then(function (response) {
         console.log(response);
         alert.success("SUCCESS");
 
@@ -89,13 +87,13 @@ export default props => {
         setText("");
         props.history.push("/");
       })
-      .catch(function(error) {
+      .catch(function (error) {
         alert.error("ERROR");
         console.log(error);
       });
   };
 
-  const handleSubmitId = e => {
+  const handleSubmitId = (e) => {
     e.preventDefault();
     fetchQuestionFromDb();
   };
@@ -103,7 +101,7 @@ export default props => {
   const fetchQuestionFromDb = async () => {
     axios
       .get(`https://server-vaprosnik.herokuapp.com/questions/${givenId}`)
-      .then(response => {
+      .then((response) => {
         setQuestionObject(response.data);
       });
   };
@@ -141,7 +139,7 @@ export default props => {
           required
           type="text"
           placeholder="ID на въпроса"
-          onChange={e => {
+          onChange={(e) => {
             setGivenId(e.target.value);
           }}
         ></Form.Control>
@@ -149,7 +147,7 @@ export default props => {
           Зареди
         </Button>
       </Form>
-      <Form onSubmit={e => onSubmitEdit(e)}>
+      <Form onSubmit={(e) => onSubmitEdit(e)}>
         <Form.Group className="group-question" controlId="questions">
           <Form.Label>Редактирай Въпрос:</Form.Label>
           <Form.Control
@@ -158,7 +156,7 @@ export default props => {
             as="textarea"
             rows="5"
             value={text}
-            onChange={e => setText(e.target.value)}
+            onChange={(e) => setText(e.target.value)}
           />
         </Form.Group>
         <Form.Group controlId="option1">
@@ -167,7 +165,7 @@ export default props => {
             required
             type="text"
             value={option1.split("@")[0]}
-            onChange={e => setOption1(e.target.value)}
+            onChange={(e) => setOption1(e.target.value)}
           />
         </Form.Group>
         <Form.Group controlId="option2">
@@ -176,7 +174,7 @@ export default props => {
             required
             type="text"
             value={option2.split("@")[0]}
-            onChange={e => setOption2(e.target.value)}
+            onChange={(e) => setOption2(e.target.value)}
           />
         </Form.Group>
         <Form.Group controlId="option3">
@@ -185,7 +183,7 @@ export default props => {
             required
             type="text"
             value={option3.split("@")[0]}
-            onChange={e => setOption3(e.target.value)}
+            onChange={(e) => setOption3(e.target.value)}
           />
         </Form.Group>
         <Form.Group controlId="option4">
@@ -194,7 +192,7 @@ export default props => {
             required
             type="text"
             value={option4.split("@")[0]}
-            onChange={e => setOption4(e.target.value)}
+            onChange={(e) => setOption4(e.target.value)}
           />
         </Form.Group>
         <Button className="edit-btn" type="submit" variant="primary">
