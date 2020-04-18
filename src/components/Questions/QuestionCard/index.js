@@ -8,17 +8,17 @@ import deleteImg from "../../../images/delete.png";
 import "./style.scss";
 
 export default (props) => {
-  const QUESTIONS_TO_SHOW = 15;
+  const QUESTIONS_TO_SHOW = 5;
 
   const gradeTable = {
     "1": "Слаб 2, ее пупас защо така :(",
-    "2": "Слаб 2, ее пупас защо така :(",
-    "3": "Слаб 2, ее пупас защо така :(",
-    "4": "Слаб 2, ее пупас защо така :(",
-    "5": "Слаб 2, ее пупас защо така :(",
-    "6": "Слаб 2, ее пупас защо така :(",
-    "7": "Слаб 2, ее пупас защо така :(",
-    "8": "Среден 3, ее пупас защо така :(",
+    "2": "Слаб 2, другият път ще е повече пупи :)",
+    "3": "Слаб 2, другият път ще е повече пупи :)",
+    "4": "Слаб 2, другият път ще е повече пупи :)",
+    "5": "Слаб 2, другият път ще е повече пупи :)",
+    "6": "Слаб 2, другият път ще е повече пупи :)",
+    "7": "Слаб 2, другият път ще е повече пупи :)",
+    "8": "Среден 3, другият път ще е повече пупи :)",
     "9": "Добър 3.5, другият път ще е повече пупи :)",
     "10": "Добър 4, другият път ще е повече пупи :)",
     "11": "Много добър 4.50, другият път ще е повече пупи :)",
@@ -28,15 +28,6 @@ export default (props) => {
     "15": "Отличен 6, право пупас!!! <3",
   };
 
-  // const mockTable = {
-  //   "1": 2,
-  //   "2": 3,
-  //   "3": 4,
-  //   "4": 5,
-  //   "5": 6,
-  // };
-
-  const [selectedOption, setSelectedOption] = useState("");
   const {
     getResults,
     isSubmitted,
@@ -46,11 +37,47 @@ export default (props) => {
     id,
   } = props;
 
-  const onToggle = (newValue) => {
+  const [selectedOption, setSelectedOption] = useState("");
+  const [isAChecked, setIsAChecked] = useState(false);
+  const [isBChecked, setIsBChecked] = useState(false);
+  const [isCChecked, setIsCChecked] = useState(false);
+  const [isDChecked, setIsDChecked] = useState(false);
+
+  const onToggle = (newValue, optionLabel) => {
+    console.log(newValue);
     if (selectedOption !== newValue) {
       setSelectedOption(newValue);
 
       answers.current[id] = newValue.split("@")[1];
+    }
+
+    switch (optionLabel) {
+      case "a":
+        setIsAChecked(true);
+        setIsBChecked(false);
+        setIsCChecked(false);
+        setIsDChecked(false);
+        break;
+      case "b":
+        setIsAChecked(false);
+        setIsBChecked(true);
+        setIsCChecked(false);
+        setIsDChecked(false);
+        break;
+      case "c":
+        setIsAChecked(false);
+        setIsBChecked(false);
+        setIsCChecked(true);
+        setIsDChecked(false);
+        break;
+      case "d":
+        setIsAChecked(false);
+        setIsBChecked(false);
+        setIsCChecked(false);
+        setIsDChecked(true);
+        break;
+      default:
+        break;
     }
   };
 
@@ -124,9 +151,10 @@ export default (props) => {
               <InputGroup.Prepend>
                 <InputGroup.Checkbox
                   onChange={() => {
-                    onToggle(props.option1);
+                    onToggle(props.option1, "a");
                   }}
                   aria-label="Checkbox for following text input"
+                  checked={isAChecked}
                 />
               </InputGroup.Prepend>
 
@@ -138,9 +166,10 @@ export default (props) => {
               <InputGroup.Prepend>
                 <InputGroup.Checkbox
                   onChange={() => {
-                    onToggle(props.option2);
+                    onToggle(props.option2, "b");
                   }}
                   aria-label="Checkbox for following text input"
+                  checked={isBChecked}
                 />
               </InputGroup.Prepend>
 
@@ -152,9 +181,10 @@ export default (props) => {
               <InputGroup.Prepend>
                 <InputGroup.Checkbox
                   onChange={() => {
-                    onToggle(props.option3);
+                    onToggle(props.option3, "c");
                   }}
                   aria-label="Checkbox for following text input"
+                  checked={isCChecked}
                 />
               </InputGroup.Prepend>
 
@@ -166,9 +196,10 @@ export default (props) => {
               <InputGroup.Prepend>
                 <InputGroup.Checkbox
                   onChange={() => {
-                    onToggle(props.option4);
+                    onToggle(props.option4, "d");
                   }}
                   aria-label="Checkbox for following text input"
+                  checked={isDChecked}
                 />
               </InputGroup.Prepend>
               <span className="answer">{` Г) ${
