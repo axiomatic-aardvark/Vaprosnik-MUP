@@ -113,7 +113,7 @@ export default (props) => {
       >
         {formatChosenGroup(group)}
       </span>
-      {questionsToShow.length !== 0 ? (
+      {questionsToShow.length === 0 ? (
         <ul className="questions">
           {questionsToShow.map((q, i) => {
             let scrambledArr = genScrambledArr(
