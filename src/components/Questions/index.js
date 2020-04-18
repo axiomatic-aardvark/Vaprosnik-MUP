@@ -96,7 +96,7 @@ export default (props) => {
       >
         {formatChosenGroup(group)}
       </span>
-      {shuffledQuestions ? (
+      {questionsToShow.length !== 0 ? (
         <ul className="questions">
           {questionsToShow.map((q, i) => {
             let scrambledArr = genScrambledArr(
@@ -127,7 +127,7 @@ export default (props) => {
           })}
         </ul>
       ) : (
-        <>
+        <div className="loader-container">
           <Loader
             type="ThreeDots"
             color="#007bff"
@@ -139,7 +139,7 @@ export default (props) => {
             *Ако въпросите не заредят до 2-3 мин има проблем с базата данни. :(
             Моля опитайте по-късно.
           </span>
-        </>
+        </div>
       )}
     </div>
   );

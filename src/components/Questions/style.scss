@@ -1,7 +1,6 @@
 .questions-wrapper {
   min-width: 800px;
   flex-direction: column;
-  
 }
 
 div {
@@ -151,6 +150,12 @@ div {
   color: #800000;
   font-weight: normal;
   text-align: left;
+}
+
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50vh;
 }
 
 @media (max-width: 550px) {
