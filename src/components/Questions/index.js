@@ -16,6 +16,23 @@ export default (props) => {
   const globalContext = useContext(GlobalContext);
   let { questions, onQuestionsToShowUpdate, questionsToShow } = globalContext;
 
+  if (questionsToShow) {
+    const newIds = questionsToShow.map((q) => {
+      return q._id;
+    });
+
+    let idsInLocalStorage = [];
+
+    if (localStorage.getItem("PAST_QUESTIONS")) {
+      idsInLocalStorage = localStorage
+        .getItem("PAST_QUESTIONS")
+        .split(",")
+        .filter((x) => x);
+    }
+
+    localStorage.setItem("PAST_QUESTIONS", [...idsInLocalStorage, newIds]);
+  }
+
   const shuffle = (array) => {
     let newArr = [...array];
 
