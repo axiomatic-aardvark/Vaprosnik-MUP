@@ -4,18 +4,18 @@ import { Button } from "react-bootstrap";
 
 import Modal from "../Modal";
 
-export default props => {
+export default (props) => {
   const [isModalShown, setIsModalShown] = useState(false);
   const [choice, setChoice] = useState("");
 
   const [clicked, setClicked] = useState("");
 
-  const handleChosenOption = cause => {
+  const handleChosenOption = (cause) => {
     setClicked(cause);
     setIsModalShown(true);
   };
 
-  const handleChoice = incomingChoice => {
+  const handleChoice = (incomingChoice) => {
     setChoice(incomingChoice);
   };
 

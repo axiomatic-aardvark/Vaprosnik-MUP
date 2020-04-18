@@ -16,23 +16,6 @@ export default (props) => {
   const globalContext = useContext(GlobalContext);
   let { questions, onQuestionsToShowUpdate, questionsToShow } = globalContext;
 
-  if (questionsToShow) {
-    const newIds = questionsToShow.map((q) => {
-      return q._id;
-    });
-
-    let idsInLocalStorage = [];
-
-    if (localStorage.getItem("PAST_QUESTIONS")) {
-      idsInLocalStorage = localStorage
-        .getItem("PAST_QUESTIONS")
-        .split(",")
-        .filter((x) => x);
-    }
-
-    localStorage.setItem("PAST_QUESTIONS", [...idsInLocalStorage, newIds]);
-  }
-
   const shuffle = (array) => {
     let newArr = [...array];
 
@@ -57,15 +40,105 @@ export default (props) => {
 
   let shuffledQuestions = shuffle(questions);
 
-  if (group === "bpleven") {
-    shuffledQuestions = shuffledQuestions
-      .filter((q) => !q.group || q.group === "")
-      .slice(0, 15);
-  } else {
-    shuffledQuestions = shuffledQuestions
-      .filter((q) => q.group === group)
-      .slice(0, 15);
-  }
+  useEffect(() => {
+    if (group === "bpleven") {
+      let idsInLocalStorage = [];
+
+      if (localStorage.getItem("PAST_QUESTIONS_BPLEVEN")) {
+        idsInLocalStorage = localStorage
+          .getItem("PAST_QUESTIONS_BPLEVEN")
+          .split(",")
+          .filter((x) => x);
+      }
+
+      shuffledQuestions = shuffledQuestions.filter(
+        (q) => !q.group || q.group === ""
+      );
+
+      const shuffledQuestionsBeforeSlicing = shuffledQuestions.filter((qbs) => {
+        return idsInLocalStorage.indexOf(qbs._id) === -1;
+      });
+
+      shuffledQuestions = shuffledQuestionsBeforeSlicing;
+
+      shuffledQuestions = shuffledQuestionsBeforeSlicing.slice(0, 15);
+
+      const newIds = shuffledQuestions.map((q) => {
+        return q._id;
+      });
+
+      const MAX_IDS_IN_LOCAL_STORAGE =
+        Math.floor((shuffledQuestionsBeforeSlicing.length * 7) / 8) || 10000000;
+
+      if (idsInLocalStorage.length >= MAX_IDS_IN_LOCAL_STORAGE) {
+        console.log("Clearing local storage for " + group);
+        localStorage.setItem("PAST_QUESTIONS_BPLEVEN", null);
+      } else {
+        if (idsInLocalStorage)
+          localStorage.setItem("PAST_QUESTIONS_BPLEVEN", [
+            idsInLocalStorage.concat(
+              newIds.filter((newId) => {
+                return idsInLocalStorage.indexOf(newId) === -1;
+              })
+            ),
+          ]);
+
+        if (localStorage.getItem("PAST_QUESTIONS_BPLEVEN")) {
+          idsInLocalStorage = localStorage
+            .getItem("PAST_QUESTIONS_BPLEVEN")
+            .split(",")
+            .filter((x) => x);
+        }
+      }
+    } else {
+      let idsInLocalStorage = [];
+
+      if (localStorage.getItem(`PAST_QUESTIONS_${group.toUpperCase()}`)) {
+        idsInLocalStorage = localStorage
+          .getItem(`PAST_QUESTIONS_${group.toUpperCase()}`)
+          .split(",")
+          .filter((x) => x);
+      }
+
+      shuffledQuestions = shuffledQuestions.filter((q) => q.group === group);
+
+      const shuffledQuestionsBeforeSlicing = shuffledQuestions.filter((qbs) => {
+        return idsInLocalStorage.indexOf(qbs._id) === -1;
+      });
+
+      shuffledQuestions = shuffledQuestionsBeforeSlicing;
+
+      shuffledQuestions = shuffledQuestionsBeforeSlicing.slice(0, 15);
+
+      const newIds = shuffledQuestions.map((q) => {
+        return q._id;
+      });
+
+      const MAX_IDS_IN_LOCAL_STORAGE =
+        Math.floor((shuffledQuestionsBeforeSlicing.length * 7) / 8) || 10000000;
+
+      if (idsInLocalStorage.length >= MAX_IDS_IN_LOCAL_STORAGE) {
+        console.log("Clearing local storage for " + group);
+        localStorage.setItem(`PAST_QUESTIONS_${group.toUpperCase()}`, null);
+      } else {
+        if (idsInLocalStorage)
+          localStorage.setItem(`PAST_QUESTIONS_${group.toUpperCase()}`, [
+            idsInLocalStorage.concat(
+              newIds.filter((newId) => {
+                return idsInLocalStorage.indexOf(newId) === -1;
+              })
+            ),
+          ]);
+
+        if (localStorage.getItem(`PAST_QUESTIONS_${group.toUpperCase()}`)) {
+          idsInLocalStorage = localStorage
+            .getItem(`PAST_QUESTIONS_${group.toUpperCase()}`)
+            .split(",")
+            .filter((x) => x);
+        }
+      }
+    }
+  }, [questions]);
 
   useEffect(() => {
     if (questionsToShow.length === 0) {
@@ -147,7 +220,7 @@ export default (props) => {
         <div className="loader-container">
           <Loader
             type="ThreeDots"
-            color="#007bff"
+            color="rgb(128, 0, 0)"
             height={100}
             width={100}
             timeout={1200000} //20 minutes
