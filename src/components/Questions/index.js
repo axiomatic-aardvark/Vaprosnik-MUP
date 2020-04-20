@@ -11,6 +11,7 @@ import "./style.scss";
 export default (props) => {
   const answers = useRef({});
 
+  console.log(answers);
   const group = props.location.state.group;
 
   const globalContext = useContext(GlobalContext);

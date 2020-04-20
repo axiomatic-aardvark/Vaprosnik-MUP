@@ -11,6 +11,7 @@ export default (props) => {
   const QUESTIONS_TO_SHOW = 15;
 
   const gradeTable = {
+    "0": "Слаб 2, ее пупас защо така :(",
     "1": "Слаб 2, ее пупас защо така :(",
     "2": "Слаб 2, другият път ще е повече пупи :)",
     "3": "Слаб 2, другият път ще е повече пупи :)",
@@ -47,7 +48,11 @@ export default (props) => {
     if (selectedOption !== newValue) {
       setSelectedOption(newValue);
 
-      answers.current[id] = newValue.split("@")[1];
+      answers.current[id] = {
+        isTrue: newValue.split("@")[1],
+        label: optionLabel,
+        fullAnswer: newValue,
+      };
     }
 
     switch (optionLabel) {
@@ -82,7 +87,7 @@ export default (props) => {
 
   const showRes = () => {
     const rightAnswersCount = Object.values(answers.current).filter(
-      (a) => a === "t"
+      (a) => a.isTrue === "t"
     ).length;
 
     const wrongAnswersCount = QUESTIONS_TO_SHOW - rightAnswersCount;
