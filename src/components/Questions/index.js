@@ -67,8 +67,12 @@ export default (props) => {
         return q._id;
       });
 
+      console.log(shuffledQuestionsBeforeSlicing);
       const MAX_IDS_IN_LOCAL_STORAGE =
-        Math.floor((shuffledQuestionsBeforeSlicing.length * 7) / 8) || 10000000;
+        Math.floor((shuffledQuestionsBeforeSlicing.length * 9) / 10) ||
+        10000000;
+
+      console.log(idsInLocalStorage.length, " ", MAX_IDS_IN_LOCAL_STORAGE);
 
       if (idsInLocalStorage.length >= MAX_IDS_IN_LOCAL_STORAGE) {
         console.log("Clearing local storage for " + group);
@@ -115,7 +119,7 @@ export default (props) => {
       });
 
       const MAX_IDS_IN_LOCAL_STORAGE =
-        Math.floor((shuffledQuestionsBeforeSlicing.length * 7) / 8) || 10000000;
+        Math.ceil((shuffledQuestionsBeforeSlicing.length * 7) / 8) || 10000000;
 
       if (idsInLocalStorage.length >= MAX_IDS_IN_LOCAL_STORAGE) {
         console.log("Clearing local storage for " + group);
