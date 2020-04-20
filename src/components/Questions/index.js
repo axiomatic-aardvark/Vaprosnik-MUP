@@ -11,7 +11,6 @@ import "./style.scss";
 export default (props) => {
   const answers = useRef({});
 
-  console.log(answers);
   const group = props.location.state.group;
 
   const globalContext = useContext(GlobalContext);
@@ -68,12 +67,9 @@ export default (props) => {
         return q._id;
       });
 
-      console.log(shuffledQuestionsBeforeSlicing);
       const MAX_IDS_IN_LOCAL_STORAGE =
         Math.floor((shuffledQuestionsBeforeSlicing.length * 9) / 10) ||
         10000000;
-
-      console.log(idsInLocalStorage.length, " ", MAX_IDS_IN_LOCAL_STORAGE);
 
       if (idsInLocalStorage.length >= MAX_IDS_IN_LOCAL_STORAGE) {
         console.log("Clearing local storage for " + group);
